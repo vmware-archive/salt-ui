@@ -1,78 +1,115 @@
-/*jshint laxcomma:true */
-
 define(function(require){
-    "use strict";
+    'use strict';
 
     var _ = require('underscore'),
         Backbone = require('backbone'),
+        $ = require('jquery'),
         fixtures = require('fixtures');
 
     /**
      * A model that contains all the functions and grains for a single minion.
      */
-    var Minion = Backbone.Model.extend({
-        fetch: function() {
-            this.id = fixtures.grains.saltdev.id;
-            this.grains = fixtures.grains.saltdev;
-
-            this.functions = [];
-
-            // Change ["cmd.run_stdout", "cmd.run_stderr"] to
-            // {"cmd": ["run_stdout", "run_stderr"]}
-            _.each(fixtures.functions.saltdev, function(el, index, list) {
-                var modfunc = el.split('.'),
-                    mod = modfunc[0],
-                    func = modfunc[1];
-
-                this[mod] = this[mod] || [];
-                this[mod].push(func);
-            }, this.functions);
-
-            return this;
-        }
-    });
+    var Minion = Backbone.Model.extend({});
 
     /**
      * A collection of all the currently available minions.
      */
     var Minions = Backbone.Collection.extend({
-        model: Minion
-    });
+        model: Minion,
 
-    /**
-     * A collection of all the available grains items across all minions.
-     */
-    var Grains = Backbone.Collection.extend({
-        tagName: 'li',
+        fetch: function() {
+            var mod_list = [];
 
-        initialize: function() {
-            this.template = $('#grains-list');
+            _.each(fixtures, function(val, key, list) {
+                var module = {};
+
+                module.id = key;
+                module.grains = val['grains.items'];
+                module.functions = {};
+
+                // Change ["cmd.run_stdout", "cmd.run_stderr"] to
+                // {"cmd": ["run_stdout", "run_stderr"]}
+                _.each(val["sys.list_functions"], function(el, index, func_list) {
+                    var modfunc = el.split('.'),
+                        mod = modfunc[0],
+                        func = modfunc[1];
+
+                    module.functions[mod] = module.functions[mod] || [];
+                    module.functions[mod].push(func);
+                });
+
+                mod_list.push(module);
+            });
+
+            this.add(mod_list);
         },
 
-        events: {
-        },
+        search : function(letters){
+            if(letters === '') return this;
 
-        render: function() {
-            var content = this.template.tmpl(this.model.toJSON());
+            var pattern = new RegExp(letters,'gi');
+            return _(this.filter(function(data) {
+                return pattern.test(data.get('id'));
+            }));
         }
     });
 
     /**
-     * A list of all minions
+     * A view for a single minion
      */
-    var MinionList = Backbone.View.extend({
+    var MinionView = Backbone.View.extend({
+        tagName: 'li',
+        events: {
+            'click a': 'clicked'
+        },
+
+        clicked: function(e){
+            e.preventDefault();
+            var name = this.model.get('id');
+        },
+
+        render: function(){
+            var template = _.template($('#tmpl-minion').html());
+            this.$el.append(template(this.model.toJSON()));
+            return this;
+        }
     });
 
     /**
-     * A list of all grains across all models
+     * A view that manages all the MinionViews
      */
-    var GrainsList = Backbone.View.extend({
-    });
+    var MinionListView = Backbone.View.extend({
+        tagName: 'ul',
+        className: 'unstyled',
 
-    /**
-     * A list of all functions across all models
-     */
-    var FunctionsList = Backbone.View.extend({
+        events: {
+            'keyup #minions-sidebar form' : 'search'
+        },
+
+        initialize: function(){
+            _.bindAll(this, 'renderItem');
+            this.collection.bind('reset', this.render, this);
+        },
+
+        renderItem: function(model){
+            var minionView = new MinionView({model: model});
+            minionView.render();
+            this.$el.append(minionView.el);
+        },
+
+        render: function(){
+            this.collection.each(this.renderItem);
+
+            var filter_tmpl = _.template($('#tmpl-minions-filter').html());
+            this.$el.prepend(filter_tmpl());
+
+            return this;
+        },
+
+        search: function(e){
+            var letters = e.target.value;
+            this.collection.search(letters);
+        }
     });
 
     return {
@@ -80,13 +117,10 @@ define(function(require){
             Minion: Minion
         },
         collections: {
-            Minions: Minions,
-            Grains: Grains
+            Minions: Minions
         },
         views: {
-            MinionList: MinionList,
-            GrainsList: GrainsList,
-            FunctionsList: FunctionsList
+            MinionListView: MinionListView
         }
     };
 });

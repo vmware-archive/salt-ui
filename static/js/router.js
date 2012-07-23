@@ -14,6 +14,13 @@ define(function(require){
         },
 
         index: function() {
+            var minions_collection = new minions.collections.Minions();
+            minions_collection.fetch();
+            var minion_list = new minions.views.MinionListView({
+                collection: minions_collection
+            });
+            minion_list.render();
+            $('#minions-sidebar').html(minion_list.el);
         }
     });
 
