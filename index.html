@@ -123,6 +123,17 @@
                 <div class="span4">
                     <h2>Minions <small>Assemble!</small></h2>
                     <div id="minions-sidebar"></div>
+
+                    <script id="tmpl-minions-filter" type="text/tmpl">
+                        <form class="well form-search">
+                            <input type="text" class="input-medium search-query" placeholder="filter">
+                        </form>
+                    </script>
+
+                    <script id="tmpl-minion" type="text/tmpl">
+                        <input type="checkbox" name="minions" value="<%= id %>" checked="checked">
+                        <a><%= id %></a>
+                    </script>
                 </div>
 
                 <div class="span8">
