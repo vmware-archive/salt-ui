@@ -1,4 +1,4 @@
-require.config({
+requirejs.config({
     paths: {
         // Major libs
         jquery: 'libs/jquery.min',
@@ -29,23 +29,8 @@ require.config({
     urlArgs: "bust=" +  (new Date()).getTime()
 });
 
-// Init the Bootstrap carousel
-require(function(require){
-    var $ = require('jquery'),
-        bootstrap = require('bootstrap');
-
-    $(document).ready(function(){
-        $('.hero-unit .carousel').carousel({
-            interval: 2000
-        });
-    });
-});
-
 // Init main backbone app
-require(function(require){
-    var $ = require('jquery'),
-        SSorgRouter = require('router');
-
+requirejs(['jquery', 'router'], function($, SSorgRouter){
     $(document).ready(function(){
         new SSorgRouter();
         Backbone.history.start({pushState: true});

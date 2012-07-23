@@ -4,7 +4,8 @@ define(function(require){
     var _ = require('underscore'),
         Backbone = require('backbone'),
         fixtures = require('fixtures'),
-        models = require('models/minions'),
+        minions = require('models/minions'),
+        $ = require('jquery'),
         util = require('util');
 
     var SaltUIRouter = Backbone.Router.extend({
