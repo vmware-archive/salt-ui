@@ -1,18 +1,11 @@
 requirejs.config({
+    // By default load any module IDs from js/lib
+    baseUrl: 'js/lib',
+    // except if the module ID starts with 'app'
     paths: {
-        // Major libs
-        jquery: 'libs/jquery.min',
-
-        // Non-AMD libs (for use with shim)
-        underscore: 'libs/underscore-min',
-        backbone: 'libs/backbone-min',
-        bootstrap: 'libs/bootstrap.min',
-
-        // Misc
-        util: 'util',
-        templates: '../templates',
-        fixtures: 'fixtures/minion'
+        app: '../app'
     },
+    // shim non-AMD libs
     shim: {
         'underscore': {
             exports: '_'
@@ -26,11 +19,12 @@ requirejs.config({
             exports: 'jquery.bootstrap'
         }
     },
+    // DEBUG: bust caches
     urlArgs: "bust=" +  (new Date()).getTime()
 });
 
 // Init main backbone app
-requirejs(['jquery', 'router'], function($, SSorgRouter){
+requirejs(['jquery', 'app/router'], function($, SSorgRouter){
     $(document).ready(function(){
         new SSorgRouter();
         Backbone.history.start({pushState: true});
