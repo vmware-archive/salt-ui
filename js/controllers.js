@@ -1,6 +1,11 @@
 function MinionListCtrl($scope, $http) {
-    $http.get('/fixtures/minions.json').success(function(data) {
-        $scope.minion_list = data[0];
+    $http.post('/', [{
+        client: 'local',
+        tgt: '*',
+        fun: ['grains.items', 'sys.list_functions'],
+        arg: [[], []]
+    }]).success(function(data) {
+        $scope.minion_list = data['return'][0];
     });
 }
 
