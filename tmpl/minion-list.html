@@ -1,0 +1,9 @@
+<div ng-controller="MinionListCtrl">
+    <p>Search: <input ng-model="query"></p>
+
+    <ul>
+        <li ng-repeat="minion in minion_list | filter_grains:query">
+            {{ minion['grains.items'].id }}
+        </li>
+    </ul>
+</div>
