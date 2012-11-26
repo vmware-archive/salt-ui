@@ -4,11 +4,11 @@ function($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
-        templateUrl: '/tmpl/minion-list.html',
+        templateUrl: '/partials/minion-list.html',
         controller: MinionListCtrl
     })
     .when('/minions/:mid', {
-        templateUrl: '/tmpl/minion-detail.html',
+        templateUrl: '/partials/minion-detail.html',
         controller: MinionDetailCtrl
     })
     .otherwise({redirectTo: '/'});
