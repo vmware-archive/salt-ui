@@ -4,8 +4,8 @@ function($routeProvider, $locationProvider) {
 
     $routeProvider
     .when('/', {
-        templateUrl: '/partials/minion-list.html',
-        controller: MinionListCtrl
+        templateUrl: '/partials/execution.html',
+        controller: ExecutionCtrl
     })
     .when('/minions/:mid', {
         templateUrl: '/partials/minion-detail.html',

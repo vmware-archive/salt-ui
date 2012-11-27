@@ -1,0 +1,36 @@
+<div ng-controller="ExecutionCtrl" ng-submit="execute()">
+    <form class="form-horizontal">
+        <div class="input-append">
+            <input ng-model="execution.fun" id="fun" type="text" class="span2">
+
+            <div class="btn-group">
+                <button type="submit" class="btn">Execute</button>
+
+                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-wrench"></i>
+                </button>
+
+                <div class="dropdown-menu">
+                    <div class="control-group">
+                        <label class="control-label" for="client">Client</label>
+                        <div class="controls">
+                            <input ng-model="execution.client" type="text" id="client">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="tgt">Target</label>
+                        <div class="controls">
+                            <input ng-model="execution.tgt" type="text" id="tgt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <h2>{{ result_list.length }} Results</h2>
+    <ul>
+        <li ng-repeat="result in result_list">{{ result | json }}</li>
+    </ul>
+</div>

@@ -11,6 +11,28 @@ function MinionListCtrl($scope, $http) {
 
 // MinionListCtrl.$inject = ['$scope', '$http'];
 
+/**
+ * Run remote executions and display the result
+ *
+ */
+function ExecutionCtrl($scope, $http) {
+    $scope.execution = {
+        client: 'local',
+        tgt: '*'
+    };
+    $scope.result_list = [];
+
+    $scope.execute = function() {
+        $http.post('/', [{
+            client: this.execution.client,
+            tgt: this.execution.tgt,
+            fun: this.execution.fun
+        }]).success(function(data) {
+            $scope.result_list.push(data['return'][0]);
+        });
+    };
+}
+
 function MinionDetailCtrl($scope, $routeParams) {
     $scope.mid = $routeParams.mid;
 }
