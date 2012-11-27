@@ -1,3 +1,7 @@
+/**
+ * Fetch grains and functions for each minion
+ *
+ */
 function MinionListCtrl($scope, $http) {
     $http.post('/', [{
         client: 'local',
