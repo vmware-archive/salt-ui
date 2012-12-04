@@ -1,4 +1,6 @@
-var saltui = angular.module('salt-ui', ['salt-ui-filters']);
+var saltui = angular.module('saltui',
+    ['saltui.models', 'saltui.filters']);
+
 
 /**
  * Set up routes and URL handling
