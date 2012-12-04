@@ -1,5 +1,10 @@
-angular.module('salt-ui', ['salt-ui-filters'])
-.config(['$routeProvider', '$locationProvider',
+var saltui = angular.module('salt-ui', ['salt-ui-filters']);
+
+/**
+ * Set up routes and URL handling
+ *
+ */
+saltui.config(['$routeProvider', '$locationProvider',
 function($routeProvider, $locationProvider) {
 
     $routeProvider
