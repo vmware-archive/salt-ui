@@ -1,8 +1,8 @@
-<div ng-controller="MasterConfigValues">
-    <p>Search: <input ng-model="query"></p>
+<div data-ng-controller="MasterConfigValues">
+    <p>Search: <input data-ng-model="query"></p>
 
     <ul>
-        <li ng-repeat="value in master_config | filter:query">
+        <li data-ng-repeat="value in master_config | filter:query">
         {{ value }}: {{ master_config[value] }}
         </li>
     </ul>

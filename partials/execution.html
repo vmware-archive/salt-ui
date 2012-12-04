@@ -1,7 +1,7 @@
-<div ng-controller="ExecutionCtrl" ng-submit="execute()">
+<div data-ng-controller="ExecutionCtrl" data-ng-submit="execute()">
     <form class="form-horizontal">
         <div class="input-append">
-            <input ng-model="execution.fun" id="fun" type="text" class="span2">
+            <input data-ng-model="execution.fun" id="fun" type="text" class="span2">
 
             <div class="btn-group">
                 <button type="submit" class="btn">Execute</button>
@@ -14,14 +14,14 @@
                     <div class="control-group">
                         <label class="control-label" for="client">Client</label>
                         <div class="controls">
-                            <input ng-model="execution.client" type="text" id="client">
+                            <input data-ng-model="execution.client" type="text" id="client">
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label class="control-label" for="tgt">Target</label>
                         <div class="controls">
-                            <input ng-model="execution.tgt" type="text" id="tgt">
+                            <input data-ng-model="execution.tgt" type="text" id="tgt">
                         </div>
                     </div>
                 </div>
@@ -31,6 +31,6 @@
 
     <h2>{{ result_list.length }} Results</h2>
     <ul>
-        <li ng-repeat="result in result_list">{{ result | json }}</li>
+        <li data-ng-repeat="result in result_list">{{ result | json }}</li>
     </ul>
 </div>
