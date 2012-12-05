@@ -15,7 +15,7 @@ var MinionListCtrl = function($scope, Minion) {
  * Run remote executions and display the result
  *
  */
-function ExecutionCtrl($scope, $http) {
+var ExecutionCtrl = function($scope, saltAPI) {
     $scope.execution = {
         client: 'local',
         tgt: '*'
@@ -23,12 +23,14 @@ function ExecutionCtrl($scope, $http) {
     $scope.result_list = [];
 
     $scope.execute = function() {
-        $http.post('/', [{
+        saltAPI({
             client: this.execution.client,
             tgt: this.execution.tgt,
             fun: this.execution.fun
-        }]).success(function(data) {
+        }, function(data) {
             $scope.result_list.push(data['return'][0]);
         });
     };
-}
+};
+
+ExecutionCtrl.$inject = ['$scope', 'saltAPI'];
