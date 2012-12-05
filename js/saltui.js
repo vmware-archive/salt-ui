@@ -7,14 +7,13 @@ var saltui = angular.module('saltui',
  *
  */
 saltui.config(['$routeProvider', '$locationProvider',
-function($routeProvider, $locationProvider) {
-
-    $routeProvider
-    .when('/', {
-        templateUrl: '/partials/execution.html',
-        controller: ExecutionCtrl
-    })
-    .otherwise({redirectTo: '/'});
-
+        function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
+
+    $routeProvider.when('/minions', {
+        controller: 'MinionListCtrl',
+        templateUrl: '/partials/minion-list.html'
+    });
+
+    $routeProvider.otherwise({redirectTo: '/minions'});
 }]);
