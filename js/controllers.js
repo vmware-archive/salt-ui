@@ -2,18 +2,14 @@
  * Fetch grains and functions for each minion
  *
  */
-function MinionListCtrl($scope, $http) {
-    $http.post('/', [{
-        client: 'local',
-        tgt: '*',
-        fun: ['grains.items', 'sys.list_functions'],
-        arg: [[], []]
-    }]).success(function(data) {
-        $scope.minion_list = data['return'][0];
-    });
-}
 
-// MinionListCtrl.$inject = ['$scope', '$http'];
+var MinionListCtrl = function($scope, Minion) {
+    var minions = Minion.all(function() {
+        $scope.minion_list = minions['return'][0];
+    });
+};
+
+// MinionListCtrl.$inject = ['$scope', 'Minion'];
 
 /**
  * Run remote executions and display the result
