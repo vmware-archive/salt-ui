@@ -1,5 +1,8 @@
-var saltui = angular.module('saltui',
-    ['saltui.models', 'saltui.services', 'saltui.filters']);
+var saltui = angular.module('saltui', [
+    'saltui.models',
+    'saltui.services',
+    'saltui.directives',
+    'saltui.filters']);
 
 
 /**
