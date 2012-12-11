@@ -2,20 +2,19 @@
  * Fetch grains and functions for each minion
  *
  */
-
 var MinionListCtrl = function($scope, Minion) {
     var minions = Minion.all(function() {
         $scope.minion_list = minions['return'][0];
     });
 };
 
-// MinionListCtrl.$inject = ['$scope', 'Minion'];
+MinionListCtrl.$inject = ['$scope', 'Minion'];
 
 /**
  * Run remote executions and display the result
  *
  */
-var ExecutionCtrl = function($scope, saltAPI) {
+var ExecutionFormCtrl = function($scope, saltAPI) {
     $scope.execution = {
         client: 'local',
         tgt: '*'
@@ -33,4 +32,18 @@ var ExecutionCtrl = function($scope, saltAPI) {
     };
 };
 
-ExecutionCtrl.$inject = ['$scope', 'saltAPI'];
+ExecutionFormCtrl.$inject = ['$scope', 'saltAPI'];
+
+/**
+ * A controller to manage all the execution controllers: the form that displays
+ * the available modules and functions, running the execution, and displaying
+ * the results
+ *
+ */
+var ExecutionCtrl = function($scope, Minion) {
+    var minions = Minion.all(function() {
+        $scope.minion_list = minions['return'][0];
+    });
+};
+
+ExecutionCtrl.$inject = ['$scope', 'Minion'];
