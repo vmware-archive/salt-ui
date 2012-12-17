@@ -1,5 +1,5 @@
 define(['angular'], function(angular) {
     'use strict';
 
-    return angular.module('saltui.filters', []);
+    return angular.module('saltui.services', []);
 });
