@@ -1,8 +1,7 @@
 define([
-        'saltui/controllers/execution-form',
-        'saltui/controllers/execution',
-        'saltui/controllers/minion-list'
-        ], function() {
+    'saltui/models/jobs',
+    'saltui/models/minion'
+], function() {
     'use strict';
 
 });
