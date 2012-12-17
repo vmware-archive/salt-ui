@@ -1,8 +1,6 @@
 define([
-        'saltui/controllers/execution-form',
-        'saltui/controllers/execution',
-        'saltui/controllers/minion-list'
-        ], function() {
+    'saltui/services/salt-api'
+], function() {
     'use strict';
 
 });
