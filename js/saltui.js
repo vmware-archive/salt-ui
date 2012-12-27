@@ -1,41 +1,43 @@
-requirejs.config({
+/**
+ * RequireJS configuration
+ */
+requirejs.config(
     // By default load any module IDs from js/lib
-    baseUrl: 'js/lib',
-    // except if the module ID starts with 'saltui'
-    paths: {
-        saltui: '../saltui'
-    },
+    { baseUrl: 'js/lib'
+    // except if the module ID starts with...
+    , paths:
+        { binders: '../binders'
+        , conf: '../conf'
+        , elements: '../elements'
+        , formatters: '../formatters'
+        , models: '../models'
+        , utils: '../utils'
+        , tmpl: '../../tmpl'
+        }
     // shim non-AMD libs
-    shim: {
-        'underscore': {exports: '_'},
-        'angular': {exports: 'angular'},
-        'angular-resource': ['angular'],
-        'bootstrap': ['jquery']
-    },
+    , shim:
+        { 'underscore': {exports: '_'}
+        , 'rivets': {exports: 'rivets'}
+        }
     // DEBUG: bust caches
-    urlArgs: "bust=" +  (new Date()).getTime()
-});
+    , urlArgs: 'bust=' +  (new Date()).getTime()
+    }
+);
 
 /**
- * Set up routes.
- * In addition grab any user-defined routes. This allows code defined outside
- * the saltui app to be dynamically loaded and injected.
- *
- */
-requirejs([
-            'saltui/main',
-            'angular',
-            'saltui/controllers/execution'
-            // 'http://localhost:8000/routes?callback=define'
-    ], function(saltui, angular, ExecutionCtrl, extraRoutes) {
-    'use strict';
+Main salt-ui entry-point
 
-    saltui.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/', {
-            controller: ExecutionCtrl,
-            templateUrl: '/partials/execution.html'
-        });
-
-        $routeProvider.otherwise({redirectTo: '/'});
-    }]);
-});
+@module saltui
+**/
+requirejs(
+    [ 'domReady!'
+    , 'elements/main'
+    , 'formatters/main'
+    , 'binders/main'
+    , 'conf/main'
+    ],
+    function(document) {
+        'use strict';
+        return null;
+    }
+);
