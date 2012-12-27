@@ -19,14 +19,6 @@ define(['rivets', 'underscore', 'watch'], function(rivets, _, Watch) {
             },
             read: function(obj, keypath) {
                 return obj[keypath];
-                // fetch a value from nested objects using a delimiter that
-                // still allows for periods:
-                // {minion: {'grains.items': {id: 'ms-1'}}}
-                // minion__grains.items__id
-                return _.reduce(
-                    keypath.split('__'),
-                    function(memo, val) { return memo[val]; },
-                    obj);
             },
             publish: function(obj, keypath, value) {
                 obj[keypath] = value;
