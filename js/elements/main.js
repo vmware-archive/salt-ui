@@ -5,7 +5,8 @@ All saltui custom X-Tag elements
 **/
 define([
     'elements/execution',
-    'elements/minion-list'
+    'elements/minion-list',
+    'elements/modal.js',
         ], function() {
     'use strict';
     return arguments;
