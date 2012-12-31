@@ -22,7 +22,7 @@ define(function(require) {
 
     route_map.add('login', {
         url: '#/login',
-        tmpl: require('text!tmpl/login.html'),
+        tmpl: '<x-login></x-login>',
         type: 'modal',
     });
 

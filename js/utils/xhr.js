@@ -48,6 +48,10 @@ define(['conf/routes', 'q', 'underscore'], function (routes, Q, _) {
             if ((req.status >= 200 && req.status < 300) || req.status === 304) {
                 deferred.resolve(e.target.response);
             } else {
+                if (req.status === 401) {
+                    window.location.hash = routes.get_url('login');
+                }
+
                 deferred.reject(
                     new Error('Server responded with status ' + req.status));
             }
@@ -56,9 +60,13 @@ define(['conf/routes', 'q', 'underscore'], function (routes, Q, _) {
         // Convert the request data to a string
         req.send(JSON.stringify(data));
 
-        // Convert the response data to an object
+        // Convert the response data to an object (if possible)
         return deferred.promise.then(function(result) {
-            return JSON.parse(result);
+            try {
+                return JSON.parse(result);
+            } catch (e) {
+                return result;
+            }
         });
     }
 

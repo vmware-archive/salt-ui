@@ -17,8 +17,9 @@ define(function(require) {
         exec_docs:      require('elements/exec-docs/exec-docs'),
         exec_fun:       require('elements/exec-fun/exec-fun'),
         exec_results:   require('elements/exec-results/exec-results'),
-        minion_list:    require('elements/minion-list/minion-list'),
+        login:          require('elements/login/login'),
         minion_detail:  require('elements/minion-detail/minion-detail'),
+        minion_list:    require('elements/minion-list/minion-list'),
         modal:          require('elements/modal/modal'),
     };
 
