@@ -8,10 +8,12 @@ A binder that ties the value of an <input> field to a variable.
     <p>Value of item.text: <code data-text="item.text"></code>.</p>
     <p>Text Value: <input data-input="item.text"></p>
 **/
-define(['rivets'], function(rivets) {
+define(function(require) {
     'use strict';
 
-    rivets.binders.input = {
+    var rivets = require('rivets');
+
+    var input = {
         publishes: true,
         routine: rivets.binders.value.routine,
         bind: function(el) {
@@ -22,5 +24,5 @@ define(['rivets'], function(rivets) {
         }
     };
 
-    return null;
+    return input;
 });
