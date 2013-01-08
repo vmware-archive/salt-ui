@@ -32,7 +32,7 @@ define(['x-tag'], function(xtag) {
 		});
 	}
 
-	xtag.register('x-modal', {
+	var modal = {
 		mixins: ['request'],
 		onCreate: function(){
 			this.setAttribute('tabindex',0);
@@ -48,6 +48,7 @@ define(['x-tag'], function(xtag) {
 				this.setAttribute('hide', '');
 			}
 		}
-	});
+	};
 
+        return modal;
 });
