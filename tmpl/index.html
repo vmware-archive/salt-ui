@@ -1,0 +1,38 @@
+<div class="content">
+
+    <div class="row">
+        <div class="span12">
+            <h1>salt-ui</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span4">
+            <h2>Minions</h2>
+            <x-minion-filter></x-minion-filter>
+            <x-minion-list></x-minion-list>
+        </div>
+
+        <div class="span8">
+            <div>
+                <h2>Execution</h2>
+                <form class="form-search">
+                    <x-exec-fun data-model="sysdoc"></x-exec-fun>
+                    <x-exec-arg></x-exec-arg>
+                    <button type="submit" class="btn">Execute</button>
+                </form>
+            </div>
+
+            <div>
+                <h2>Documentation</h2>
+                <x-exec-docs data-model="sysdoc"></x-exec-docs>
+            </div>
+
+            <div>
+                <h2>Results</h2>
+                <x-exec-results></x-exec-results>
+            </div>
+        </div>
+    </div>
+
+</div>
