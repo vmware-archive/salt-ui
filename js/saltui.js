@@ -27,29 +27,19 @@ requirejs.config({
 /**
 Main salt-ui entry-point
 
+Ensure all the init files have been loaded and start the routes listener
+
 @module saltui
 **/
 requirejs([
-    'text!tmpl/index.html',
-    'domReady!',
-    'path',
-    'binders/init',
     'conf/init',
-    'elements/init',
+    'binders/init',
     'formatters/init',
-    'mixins/init',
     'models/init',
-    ], function(template, document, Path) {
-        'use strict';
+    'mixins/init',
+    'elements/init',
+    ], function(conf) {
+    'use strict';
 
-        Path.map('#/').to(function(){
-            document.querySelector('body').innerHTML = template;
-        });
-
-        Path.root('#/');
-
-        Path.listen();
-
-        return null;
-    }
-);
+    conf.routes.listen();
+});

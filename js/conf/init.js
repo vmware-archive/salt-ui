@@ -8,6 +8,7 @@ define(function(require) {
 
     var configs = {
         polyfills:      require('conf/polyfills'),
+        routes:         require('conf/routes'),
         rivets:         require('conf/rivets'),
         templates:      require('conf/templates'),
     };
