@@ -600,10 +600,13 @@
     }
   };
 
-  if (typeof module !== "undefined" && module !== null) {
-    module.exports = rivets;
+  if (typeof define === 'function' && define.amd) {
+    define('rivets', function() {
+      return rivets;
+    })
   } else {
     this.rivets = rivets;
   }
+
 
 }).call(this);

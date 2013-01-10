@@ -18,7 +18,6 @@ requirejs.config({
     // shim non-AMD libs
     shim: {
         'underscore': {exports: '_'},
-        'rivets': {exports: 'rivets'},
     },
     // DEBUG: bust caches
     urlArgs: 'bust=' +  (new Date()).getTime(),
