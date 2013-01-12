@@ -3,6 +3,10 @@ All saltui custom X-Tag elements
 
 @module saltui.elements
 @returns {Object} All custom element modules, keyed by name
+
+This module registers each element with X-Tag. Each element is prefixed with
+'x-' and underscores are switched to dashes. So my_element = {} becomes
+<x-my-element></x-my-element>.
 **/
 define(function(require) {
     'use strict';
