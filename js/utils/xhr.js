@@ -18,19 +18,17 @@ An XMLHttpRequest wrapper that returns promises
         console.log(result);
     };
 **/
-define(['q', 'underscore'], function (Q, _) {
+define(['conf/routes', 'q', 'underscore'], function (routes, Q, _) {
     'use strict';
-    /*jshint browser:true */
 
     function xhr(method, path, data, headers) {
-        var deferred = Q.defer()
-          , req = new XMLHttpRequest()
-          , default_headers =
-              { 'Accept': 'application/json'
-              , 'Content-Type': 'application/json'
-              , 'X-Requested-With': 'XMLHttpRequest'
-              }
-          ;
+        var deferred = Q.defer(),
+            req = new XMLHttpRequest(),
+            default_headers = {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+            };
 
         // Begin building the request object
         req.open(method.toUpperCase(), path, true);
