@@ -64,12 +64,14 @@ define(function(require) {
             document.querySelector('body').innerHTML = this.tmpl;
         },
         render_modal: function() {
-            var tmpel = document.createDocumentFragment();
-            tmpel.appendChild = '<x-modal></x-modal>';
-            document.querySelector('body').appendChild(tmpel);
+            var modal = document.createElement('x-modal');
+            modal.setAttribute('overlay','');
+            modal.innerHTML = this.tmpl;
+            document.querySelector('body').appendChild(modal);
         },
         modal_hide: function() {
-            document.querySelector('body x-modal').removeChild();
+            var body = document.querySelector('body');
+            body.removeChild(body.querySelector('x-modal'));
         },
     };
 
