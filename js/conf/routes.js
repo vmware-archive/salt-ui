@@ -1,5 +1,12 @@
 /**
-Description
+Define URL routes and info for each, including which template to render when
+that route is accessed by a client
+
+@module saltui.conf
+@submodule routes
+
+@returns {Object} routes_map An object of route maps and helper functions to
+query defined routes
 **/
 define(function(require) {
     'use strict';
