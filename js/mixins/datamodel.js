@@ -13,16 +13,13 @@ define(['models/init', 'rivets'], function(models, rivets) {
             var that = this,
                 model = models[this.dataset.model];
 
-            // Bail out if we can't find the specified model or the returned
-            // model is not a promise
-            if (!model || !model.then) {
-                console.error('Model not found:', this);
-                return null;
+            // Bail out if we can't find the specified model
+            if (!model || !model.get_results) {
+                throw new Error('Model not found:', this);
             }
 
             if (!this.get_template) {
-                console.error('Model does not have template attribute', this);
-                return null;
+                throw new Error('Missing get_template attribute: ' + this);
             }
 
             model.then(function(result) {
