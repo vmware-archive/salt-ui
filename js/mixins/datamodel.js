@@ -14,7 +14,7 @@ define(['models/init', 'rivets'], function(models, rivets) {
                 model = models[this.dataset.model];
 
             // Bail out if we can't find the specified model
-            if (!model || !model.get_results) {
+            if (!model || !model.get_result) {
                 throw new Error('Model not found:', this);
             }
 
@@ -22,13 +22,16 @@ define(['models/init', 'rivets'], function(models, rivets) {
                 throw new Error('Missing get_template attribute: ' + this);
             }
 
-            model.then(function(result) {
+            model.get_result().then(function(result) {
                 that.innerHTML = that.get_template();
-                rivets.bind(that, {model: result, vm: that.xtag});
-            });
+                rivets.bind(that, {
+                    model: model,
+                    result: result,
+                    vm: that.xtag,
+                });
+            }).done();
         },
     };
 
     return datamodel;
 });
-
