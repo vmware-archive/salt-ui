@@ -17,7 +17,7 @@ define([
         onCreate: function(){
             var that = this;
 
-            minions.then(function(result) {
+            minions.get_result().then(function(result) {
                 that.innerHTML = template;
 
                 rivets.bind(that,
