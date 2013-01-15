@@ -9,7 +9,8 @@ define(function(require) {
     var template = require('text!./template.html'),
         rivets = require('rivets'),
         routes = require('conf/routes'),
-        xhr = require('utils/xhr');
+        xhr = require('utils/xhr'),
+        xtag = require('x-tag');
 
     var login = {
         onCreate: function() {
@@ -27,9 +28,11 @@ define(function(require) {
             'submit:delegate(form)': function(e) {
                 e.preventDefault();
 
-                var form_data = this.parentNode.xtag.form_data;
+                var that = this,
+                    form_data = this.parentNode.xtag.form_data;
 
                 xhr('post', '/login', form_data).then(function(result) {
+                    xtag.fireEvent(that, 'x-login-authed', result);
                     window.location.hash = routes.get_url('exec');
                 }).done();
             },
