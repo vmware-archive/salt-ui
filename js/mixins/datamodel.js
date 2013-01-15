@@ -22,6 +22,11 @@ define(['models/init', 'rivets'], function(models, rivets) {
                 throw new Error('Missing get_template attribute: ' + this);
             }
 
+            // Resync the model if the user (re-)auths
+            document.addEventListener('x-login-authed', function() {
+                model.sync();
+            });
+
             model.get_result().then(function(result) {
                 that.innerHTML = that.get_template();
                 rivets.bind(that, {
