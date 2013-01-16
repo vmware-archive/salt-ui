@@ -13,6 +13,7 @@ define(function(require) {
 
     var xtag = require('x-tag');
     var elem_map = {
+        exec:           require('elements/exec/exec'),
         exec_arg:       require('elements/exec-arg/exec-arg'),
         exec_docs:      require('elements/exec-docs/exec-docs'),
         exec_fun:       require('elements/exec-fun/exec-fun'),
