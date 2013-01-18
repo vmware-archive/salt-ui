@@ -52,6 +52,7 @@ define(function(require) {
                 xhr('POST', '/minions', [this.lowstate])
                 .get(0).get('return').then(function(result) {
                     xtag.fireEvent(that, 'exec-local', result.jid);
+                    that.querySelector('form').reset();
                 });
             },
         },
