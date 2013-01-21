@@ -3,15 +3,24 @@
 '''
 Sphinx documentation for salt-ui
 '''
+import json
 import os
 import sys
 
 from sphinx.directives import TocTree
 
-project = 'salt-ui'
+package_json = os.path.join(
+        os.path.dirname(__file__),
+        os.pardir,
+        'package.json')
+
+with open(package_json) as f:
+    conf = json.load(f)
+
+project = conf['name']
 copyright = '2013 Salt Stack, Inc'
 
-version = '0.5.0'
+version = conf['version']
 release = version
 
 master_doc = 'index'
@@ -31,7 +40,7 @@ intersphinx_mapping = {
 html_theme = 'default'
 
 html_title = None
-html_short_title = 'salt-ui'
+html_short_title = project
 
 html_static_path = ['_static']
 html_logo = 'salt-vert.png'
@@ -48,15 +57,15 @@ html_show_copyright = True
 
 ### Latex options
 latex_documents = [
-    ('index', 'salt-ui.tex', 'salt-ui Documentation', 'Salt Stack, Inc', 'manual'),
+    ('index', '{0}.tex'.format(project), project, 'Salt Stack, Inc', 'manual'),
 ]
 
 latex_logo = '_static/salt-vert.png'
 
 
 ### epub options
-epub_title = 'salt-ui Documentation'
-epub_author = 'Thomas S. Hatch'
+epub_title = '{0} Documentation'.format(project)
+epub_author = conf['author']
 epub_publisher = epub_author
 epub_copyright = '2013 Salt Stack, Inc'
 
