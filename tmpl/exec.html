@@ -1,19 +1,17 @@
 <div class="content">
 
     <div class="row">
-        <div class="span12">
-            <h1>salt-ui</h1>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="span4">
+        <div class="span4 sidebar">
             <h2>Minions</h2>
             <x-minion-filter></x-minion-filter>
-            <x-minion-list></x-minion-list>
+            <x-minion-list>
+            <i class="icon-spin icon-spinner"></i> 
+                Loading minions ...
+            
+            </x-minion-list>
         </div>
 
-        <div class="span8">
+        <div class="span8 main">
             <div>
                 <h2>Execution</h2>
                 <x-exec></x-exec>
