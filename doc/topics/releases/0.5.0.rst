@@ -5,15 +5,103 @@
 The Salt team is pleased to announce the 0.5.0 release of salt-ui.
 
 For those unfamiliar with Salt's versioning patterns, the 0.5.0 initial release
-is minimally functional and should be considered pre-alpha at best. The intent
-of this release is to provide a functional baseline and to start a conversation
-about the project.
+is minimally functional and should be considered pre-alpha at best. No effort
+has been spent on the design or layout thus far. The intent of this release is
+to provide a functional baseline and to start a conversation about the project
+and how best to grow it. *There are broken features and feature placeholders in
+this release.*
+
+Salt provides a vast wealth of real-time system data and :program:`salt-ui`
+must digest and display this data as graphically rich and interactive
+visualizations.
 
 :program:`salt-ui` in concept
 =============================
 
+Overview
+--------
+
 :program:`salt-ui` is a rich, JavaScript-only interface that communicates with
-Salt by making calls through :program:`salt-api`.
+Salt by making calls through :program:`salt-api`. There is no server-side
+component; all functionality resides in the browser client or in Salt itself.
+
+Code architecture
+-----------------
+
+Like Salt itself, :program:`salt-ui` is written to be as modular as possible.
+Models (:file:`js/models`), custom elements (:file:`js/elements`), and
+pluggable visualizations (TBD, see :file:`js/elements/exec-results/tree.js`)
+should be drop-in, single-file additions.
+
+The :file:`index.html` file bootstraps the app which is then served from the
+:file:`js` directory. :file:`js/lib` contains required third-party libraries
+(to be removed in a near-future release in favor of a build tool).
+
+Third-party libraries
+---------------------
+
+A design goal is allow for as much plain JavaScript as possible (without
+reinventing the wheel). We would like to avoid forcing an opinion on specific
+frameworks and large libraries. The intent is to reduce the learning curve to
+contributing and customizing :program:`salt-ui`.
+
+Some libraries in use and an explanation for each follow.
+
+`Rivets.js <http://rivetsjs.com/>`_ & `Watch.JS <https://github.com/melanke/Watch.JS>`_
+    Rivets provides two-way data binding between the DOM and a JavaScript
+    object. Watch.JS allows for using plain ol' JavaScript objects as Rivets
+    models (by transparently adding performant getters/setters).
+
+Mozilla's `X-Tag <http://x-tags.org/>`_
+    A pollyfill for Web Components (coming soon to an HTML spec near you!).
+    This allows for creating custom HTML elements that contain reusable and
+    standalone functionality. This is the view-model layer of an MVVM setup.
+
+`RequireJS <http://requirejs.org/>`_
+    A utility to organize code into separate modules, allow hot-loading code
+    (where appropriate), as well as concat and minify a production build.
+
+`D3 <http://d3js.org/>`_
+    A feature-packed graphing and data-binding library. (The largest bundled
+    library). D3 is output format agnostic, our target largely SVG.
+
+Building for production
+-----------------------
+
+Concatenating, minifying, and uglifying are done through the :program:`r.js`
+minifier. The configuration for doing so lives in :file:`js/build.js` (to be
+moved into a Gruntfile shortly). The current :program:`salt-ui` file size is
+60k (including third-party libs but D3).
+
+Future considerations
+---------------------
+
+:program:`salt-ui` is intended to be customized and extended to whatever makes
+sense for your organization. Your custom code, hooks into the running client,
+new or specific visualizations should all be easy to add via the usual Salt
+mechanism of placing modules under your :conf_master:`file_roots` directory.
+
+Requirements
+============
+
+* This release requires :program:`salt-api` v0.7.5
+* The browser requirement baseline for :program:`salt-ui` is support for
+  ECMAScript 5 which means any modern browser or Internet Explorer 9 and above.
+* Support for SVG is required for graphing and visualization. This should work
+  on browsers that meet the above requirement as well as iOS devices. Android
+  devices will need to install Google Chrome from the Play store as the stock
+  browser (currently being phased out) does not support SVG.
+
+Installation
+============
+
+The :file:`index.html` file in the root :program:`salt-ui` directory and the
+referenced static files must be served from an HTTP server. Currently the best
+way to serve :program:`salt-ui` is through :program:`salt-api` by
+:py:mod:`pointing the static setting <saltapi.netapi.rest_cherrypy>` in your
+Salt master config file at the Git clone of :program:`salt-ui`.
+
+:program:`salt-ui` will be available as a package on PyPI in future versions.
 
 Participation
 =============
