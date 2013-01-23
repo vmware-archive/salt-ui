@@ -2,10 +2,20 @@
     <div class="input-prepend">
         <span class="add-on">local</span>
         <span class="add-on">*</span>
-        <input type="text" class="span2" placeholder="module.function" data-input="vm.fun">
+        <input type="text" class="span2"
+            placeholder="module.function"
+            data-input="vm.fun">
     </div>
     <div class="input-append">
-        <input type="text" class="span2" placeholder="arg1 arg2=val" data-input="vm.arg">
-        <button type="submit" class="btn btn-primary"><i class="icon-magic"></i> Execute</button>
+        <input type="text" class="span2"
+            placeholder="arg1 arg2=val"
+            data-input="vm.arg">
+
+        <button type="submit" class="btn btn-primary"
+                data-class-disabled="vm.inprogress"
+                data-disabled="vm.inprogress">
+            <i class="icon-magic" data-class-icon-spinner="vm.inprogress"></i>
+            Execute
+        </button>
     </div>
 </form>

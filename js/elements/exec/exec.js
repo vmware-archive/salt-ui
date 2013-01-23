@@ -24,6 +24,7 @@ define(function(require) {
         onCreate: function() {
             this.xtag.fun = '';
             this.xtag.arg = '';
+            this.xtag.inprogress = false;
 
             rivets.bind(this, {vm: this.xtag});
         },
@@ -49,8 +50,11 @@ define(function(require) {
 
                 var that = this;
 
+                this.xtag.inprogress = true;
+
                 xhr('POST', '/minions', [this.lowstate])
                 .get(0).get('return').then(function(result) {
+                    that.xtag.inprogress = false;
                     xtag.fireEvent(that, 'exec', {jid: result.jid});
                     that.querySelector('form').reset();
                 });
