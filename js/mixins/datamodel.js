@@ -25,6 +25,7 @@ define(['models/init', 'rivets'], function(models, rivets) {
 
             model.get_result().then(function(result) {
                 rivets.bind(that, {
+                    xelem: that,
                     model: model,
                     result: result,
                     vm: that.xtag,
