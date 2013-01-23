@@ -1,7 +1,15 @@
-<div class="content">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12 page-header">
+            <img class="pull-left" width="400" src="/img/saltstack.png">
+            <h1 style="color: rgb(3,169,219);font-size: 56px; line-height: 36px;" >UI</h1>
+        </div>
+    </div>
+</div>
 
-    <div class="row">
-        <div class="span4 sidebar">
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2 sidebar">
             <h2 class="nav-header">Minions</h2>
             <x-minion-filter></x-minion-filter>
             <x-minion-list>
@@ -11,7 +19,7 @@
             </x-minion-list>
         </div>
 
-        <div class="span8 main">
+        <div class="span10 main">
             <div>
                 <h2>Execution</h2>
                 <x-exec></x-exec>
