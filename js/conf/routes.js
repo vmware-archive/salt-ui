@@ -20,6 +20,12 @@ define(function(require) {
         type: 'full',
     });
 
+    route_map.add('dash', {
+        url: '#/dash',
+        tmpl: require('text!tmpl/dash.html'),
+        type: 'full',
+    });
+
     route_map.add('login', {
         url: '#/login',
         tmpl: '<x-login></x-login>',

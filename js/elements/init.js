@@ -14,6 +14,7 @@ define(function(require) {
     var xtag = require('x-tag');
     var elem_map = {
         exec:           require('elements/exec/exec'),
+        dashexec:       require('elements/dashexec/dashexec'),
         exec_docs:      require('elements/exec-docs/exec-docs'),
         exec_results:   require('elements/exec-results/exec-results'),
         login:          require('elements/login/login'),
