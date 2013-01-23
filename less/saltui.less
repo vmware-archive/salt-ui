@@ -65,15 +65,19 @@
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
 
-.sidebar {
+@import "dash.less"; // Custom rules for the dashboard
+
+.sidebar, .hero-unit {
     background: #f1f1f1;
     border: 1px solid #e5e5e5;
-    padding-left: 15px;
-    padding-bottom: 30px;
-    min-height: 100%;
     -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
     -moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
     box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
+.sidebar {
+    min-height: 100%;
+    padding-left: 15px;
+    padding-bottom: 30px;
 }
 .running {
     color: @green;
