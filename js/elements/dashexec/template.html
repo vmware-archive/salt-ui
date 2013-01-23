@@ -1,0 +1,44 @@
+<form>
+    <button type="submit" class="btn btn-primary"
+        data-class-disabled="vm.inprogress"
+        data-target="salt.demo.no"
+        data-fun="state.sls"
+        data-arg="salt-git-pillars"
+        data-disabled="vm.inprogress">
+        <i class="icon-magic" data-class-icon-spin="vm.inprogress"></i>
+        Refresh pillar
+    </button>
+</form>
+<form>
+    <button type="submit" class="btn btn-primary"
+        data-class-disabled="vm.inprogress"
+        data-target="git.demo.no"
+        data-fun="state.sls"
+        data-arg="git-repos"
+        data-disabled="vm.inprogress">
+        <i class="icon-magic" data-class-icon-spin="vm.inprogress"></i>
+        Update Git repos
+    </button>
+</form>
+<form>
+    <button type="submit" class="btn btn-primary"
+        data-class-disabled="vm.inprogress"
+        data-target="db*.demo.no"
+        data-fun="state.sls"
+        data-arg="mysql"
+        data-disabled="vm.inprogress">
+        <i class="icon-magic" data-class-icon-spin="vm.inprogress"></i>
+        Update database
+    </button>
+</form>
+<form>
+    <button type="submit" class="btn btn-primary"
+        data-class-disabled="vm.inprogress"
+        data-target="web*.demo.no"
+        data-fun="state.sls"
+        data-arg="nginx"
+        data-disabled="vm.inprogress">
+        <i class="icon-magic" data-class-icon-spin="vm.inprogress"></i>
+        Update webservers
+    </button>
+</form>
