@@ -11,11 +11,10 @@ define(function(require) {
     'use strict';
 
     var template = require('text!./template.html'),
-        rivets = require('rivets'),
-        xhr = require('utils/xhr'),
-        xtag = require('x-tag');
+        rivets = require('rivets');
 
     var exec = {
+        mixins: ['exec'],
         content: template,
 
         /**
@@ -42,22 +41,14 @@ define(function(require) {
         },
 
         events: {
-            /**
-            Submit the execution form via Ajax and fire a custom notification
-            with the job ID that is returned for other components to act on.
-            **/
             submit: function(e) {
                 e.preventDefault();
-
                 var that = this;
 
                 this.xtag.inprogress = true;
 
-                xhr('POST', '/minions', [this.lowstate])
-                .get(0).get('return').then(function(result) {
+                this.create_jid().then(function() {
                     that.xtag.inprogress = false;
-                    xtag.fireEvent(that, 'exec', {jid: result.jid});
-                    that.querySelector('form').reset();
                 });
             },
         },
