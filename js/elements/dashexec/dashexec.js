@@ -29,7 +29,7 @@ define(function(require) {
                     client: this.dataset.client || 'local',
                     tgt: this.dataset.tgt || '*',
                     fun: this.dataset.fun,
-                    arg: this.xtag.arg ? this.xtag.arg.split(' ') : [],
+                    arg: this.dataset.arg ? this.dataset.arg.split(' ') : [],
                 };
             },
         },
