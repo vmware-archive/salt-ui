@@ -13,11 +13,34 @@
             <div class="span2 sidebar dash-sidebar">
                 <div class="sidebar-nav">
                     <h5><i class="icon-cogs"></i> Operations</h5>
-                    <x-dashexec></x-dashexec>
+                    <x-dashexec
+                        data-fun="state.sls"
+                        data-arg="salt-git-pillars"
+                        data-content="Refresh pillar">
+                    </x-dashexec>
+
+                    <x-dashexec
+                        data-fun="state.sls"
+                        data-arg="git-repos"
+                        data-content="Update Git repos">
+                    </x-dashexec>
+
+                    <x-dashexec
+                        data-fun="state.sls"
+                        data-arg="mysql"
+                        data-content="Update database">
+                    </x-dashexec>
+
+                    <x-dashexec
+                        data-fun="state.sls"
+                        data-arg="nginx"
+                        data-content="Update webservers">
+                    </x-dashexec>
                 </div>
             </div>
 
             <div class="span10 main">
+                <x-exec-results>
                 <div class="hero-unit">
                     <h1>Dashboard Proof of Concept!</h1>
                     <p>
@@ -40,6 +63,7 @@
                         </li>
                     </ul>
                 </div>
+                </x-exec-results>
             </div>
         </div>
     </div>
