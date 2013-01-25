@@ -27,6 +27,22 @@ define(function (require) {
     var routes = require('conf/routes'),
         Q = require('q');
 
+    /**
+    Return the content from an XHR response; convert from JSON if possible
+    **/
+    var get_ret = function(x) {
+        var ctype = x.getResponseHeader('content-type');
+
+        if (ctype.indexOf('json') !== -1) {
+            return JSON.parse(x.response);
+        }
+
+        return x.response;
+    };
+
+    /**
+    Fire off an ajax request
+    **/
     function xhr(opts) {
         var deferred = Q.defer(),
             req = new XMLHttpRequest(),
@@ -78,5 +94,29 @@ define(function (require) {
         });
     }
 
-    return xhr;
+    /**
+    A wrapper to facilitate retrying requests
+
+    @param {Object} opts Options to pass to xhr()
+    @param {Number} [retry] If the response is empty, retry the request
+    @param {Number} [timeout] Time to wait between request retries
+
+    @return {Promise}
+    **/
+    function retry_xhr(opts, timeout, retries) {
+        return xhr(opts).then(function(result) {
+            if (typeof(result) !== 'object') return result;
+            if (!result.return || result.return.length < 1) return result;
+
+            if (Object.keys(result['return'][0]).length === 0 && retries > 0) {
+                return Q.delay(timeout).then(function() {
+                    return retry_xhr(opts, timeout, retries - 1);
+                });
+            }
+
+            return result;
+        });
+    }
+
+    return retry_xhr;
 });
