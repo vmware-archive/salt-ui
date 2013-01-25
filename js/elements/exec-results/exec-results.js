@@ -24,11 +24,13 @@ define(function(require) {
                 this.xtag.inprogress = true;
                 this.innerHTML = template;
 
-                return xhr('GET', '/jobs/' + e.jid).get('return').get(0)
-                .then(function() {
+                return xhr({method: 'GET', path: '/jobs/' + e.jid})
+                .then(function(result) {
                     that.xtag.inprogress = false;
+                    return result;
                 })
-               .then(this.render);
+                .get('return').get(0)
+                .then(this.render);
             },
             render: function(result) {
                 // this.innerHTML = JSON.stringify(result);

@@ -31,7 +31,8 @@ define(function(require) {
                 var that = this,
                     form_data = this.parentNode.xtag.form_data;
 
-                xhr('post', '/login', form_data).then(function(result) {
+                xhr({method: 'POST', path: '/login', data: form_data})
+                .then(function(result) {
                     xtag.fireEvent(that, 'x-login-authed', result);
                     window.location.hash = routes.get_url('exec');
                 }).done();
