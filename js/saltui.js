@@ -8,6 +8,7 @@ requirejs.config({
     paths: {
         binders: '../binders',
         conf: '../conf',
+        crystals: '../crystals',
         elements: '../elements',
         formatters: '../formatters',
         mixins: '../mixins',
