@@ -24,7 +24,7 @@ define(function(require) {
                 this.xtag.inprogress = true;
                 this.innerHTML = template;
 
-                return xhr({method: 'GET', path: '/jobs/' + e.jid})
+                return xhr({method: 'GET', path: '/jobs/' + e.jid}, 700, 20)
                 .then(function(result) {
                     that.xtag.inprogress = false;
                     return result;
