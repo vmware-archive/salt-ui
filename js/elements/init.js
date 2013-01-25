@@ -15,7 +15,6 @@ define(function(require) {
     var elem_map = {
         exec:           require('elements/exec/exec'),
         dashexec:       require('elements/dashexec/dashexec'),
-        exec_docs:      require('elements/exec-docs/exec-docs'),
         exec_results:   require('elements/exec-results/exec-results'),
         login:          require('elements/login/login'),
         minion_detail:  require('elements/minion-detail/minion-detail'),
