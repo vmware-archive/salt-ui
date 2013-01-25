@@ -67,31 +67,28 @@ define(function (require) {
         });
 
         // Resolve or reject the deferred object based on the response code
-        req.onreadystatechange = function(e) {
-            if (req.readyState !== 4) {
-                return;
-            }
+        req.onreadystatechange = function() {
+            if (this.readyState !== 4) return;
 
-            if ((req.status >= 200 && req.status < 300) || req.status === 304) {
-                deferred.resolve(e.target.response);
+            if ((this.status >= 200 && this.status < 300
+                    ) || this.status === 304) {
+                deferred.resolve(get_ret(this));
             } else {
                 // Show the login form if server reponds with a 401
-                if (req.status === 401) {
+                if (this.status === 401) {
                     window.location.hash = routes.get_url('login');
                 }
 
                 deferred.reject(
-                    new Error('Server responded with status ' + req.status));
+                    new Error('Server responded with status ' + this.status));
             }
         };
 
         // Convert the request data to a string
         req.send(JSON.stringify(opts.data));
 
-        // Convert the response data to an object
-        return deferred.promise.then(function(result) {
-            return JSON.parse(result);
-        });
+        // Return the promise
+        return deferred.promise;
     }
 
     /**
