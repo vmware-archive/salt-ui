@@ -68,6 +68,8 @@ define(function(require) {
           .attr("y", -barHeight / 2)
           .attr("height", barHeight)
           .attr("width", barWidth)
+          .attr("rx", 5)
+          .attr("ry", 5)
           .style("fill", color)
           .on("click", click);
 
