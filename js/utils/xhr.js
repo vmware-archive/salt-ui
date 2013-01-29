@@ -43,27 +43,27 @@ define(function (require) {
     /**
     Fire off an ajax request
     **/
-    function xhr(opts) {
+    function xhr(method, path, data, headers) {
         var deferred = Q.defer(),
             req = new XMLHttpRequest(),
-            headers = {
+            def_headers = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
             };
 
         // Begin building the request object
-        req.open(opts.method.toUpperCase(), opts.path, true);
+        req.open(method.toUpperCase(), path, true);
 
         // Add new request headers and/or override the default values
-        if (!opts.headers) opts.headers = {};
-        Object.keys(opts.headers).forEach(function(key) {
-            headers[key] = opts.headers[key];
+        if (!headers) headers = {};
+        Object.keys(headers).forEach(function(key) {
+            def_headers[key] = headers[key];
         });
 
         // Add all headers to the request
-        Object.keys(headers).forEach(function(key) {
-            req.setRequestHeader(key, headers[key]);
+        Object.keys(def_headers).forEach(function(key) {
+            req.setRequestHeader(key, def_headers[key]);
         });
 
         // Resolve or reject the deferred object based on the response code
@@ -85,7 +85,7 @@ define(function (require) {
         };
 
         // Convert the request data to a string
-        req.send(JSON.stringify(opts.data));
+        req.send(JSON.stringify(data));
 
         // Return the promise
         return deferred.promise;
