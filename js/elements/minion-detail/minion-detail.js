@@ -11,7 +11,7 @@ modal with the details of that minion.
 define([
     'text!./template.html',
     'models/minions',
-    'rivets',
+    'rivets'
     ], function(template, minions, rivets) {
     'use strict';
 
@@ -24,19 +24,18 @@ define([
                 modal.innerHTML = template;
                 modal.setAttribute('overlay','');
                 modal.setAttribute('esc-hide','');
-
                 rivets.bind(modal,
-                    {minion: {id: 'stewart'}, vm: this.xtag});
+                    {minion: minions.getMinion(this.dataset.mid), vm: this.xtag});
 
                 frag.appendChild(modal);
                 document.body.appendChild(frag);
-            },
+            }
         },
         events: {
             click: function() {
                 this.detail();
-            },
-        },
+            }
+        }
     };
 
     return minion_detail;
