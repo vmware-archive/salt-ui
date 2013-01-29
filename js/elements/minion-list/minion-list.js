@@ -9,7 +9,7 @@ define([
     'text!./template.html',
     'models/minions',
     'rivets',
-    'underscore',
+    'underscore'
     ], function(template, minions, rivets, _) {
     'use strict';
 
@@ -23,7 +23,7 @@ define([
                 rivets.bind(that,
                     {minions: {minions: _.values(result)}, vm: that.xtag});
             });
-        },
+        }
     };
 
     return minion_list;
