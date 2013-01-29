@@ -153,20 +153,22 @@ define(function(require) {
       return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
     }
 
-    return function (result, el) {
-
+    return {
+        init: function(el) {
             vis = d3.select(el).append("svg:svg")
                 .attr("width", w)
                 .attr("height", h)
                 .append("svg:g")
                 .attr("transform", "translate(20,30)");
+        },
+        updateTree: function(result) {
             root = {
                 name: 'return',
                 children: d3.nest().entries(fmt(result)),
                 x0: 0,
                 y0: 0
             };
-
             update(root);
+        }
     }
 });
