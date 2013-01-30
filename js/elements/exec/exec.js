@@ -35,9 +35,9 @@ define(function(require) {
                     client: 'local',
                     tgt: this.xtag.tgt,
                     fun: this.xtag.fun,
-                    arg: this.xtag.arg ? this.xtag.arg.split(' ') : [],
+                    arg: this.xtag.arg ? this.xtag.arg.split(' ') : []
                 };
-            },
+            }
         },
 
         events: {
@@ -47,11 +47,13 @@ define(function(require) {
 
                 this.xtag.inprogress = true;
 
-                this.create_jid().then(function() {
-                    that.xtag.inprogress = false;
-                });
-            },
-        },
+                this.create_jid()
+                    .then(function() {
+                        that.xtag.inprogress = false;
+                    })
+                    .done();
+            }
+        }
     };
 
     return exec;

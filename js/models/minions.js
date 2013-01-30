@@ -45,6 +45,14 @@ define(function(require) {
         },
 
         /**
+         Return the cached minion by id
+         @return {Object}
+         **/
+        getMinion: function(id) {
+           return this._result[id];
+        },
+
+        /**
         Returns the cached copy of results or queries the API for new results
         @returns {Promise}
         **/
@@ -53,7 +61,7 @@ define(function(require) {
                 return Q.fcall(function(){ return this._result; }.bind(this));
             }
             return this.sync();
-        },
+        }
     };
 
     return minions;

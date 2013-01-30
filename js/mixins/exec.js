@@ -27,15 +27,13 @@ define(function(require) {
             create_jid: function() {
                 var that = this;
 
-                var request = xhr({method: 'POST', path: '/minions',
-                    data: [this.lowstate]})
-                .get(0).get('return').then(function(result) {
-                    xtag.fireEvent(that, 'exec', {jid: result.jid});
-                });
-
-                return request;
-            },
-        },
+                return xhr({method: 'POST', path: '/minions', data: [this.lowstate]})
+                    .get(0).get('return')
+                    .then(function(result) {
+                        xtag.fireEvent(that, 'exec', {jid: result.jid});
+                    })
+            }
+        }
     };
 
     return exec;
