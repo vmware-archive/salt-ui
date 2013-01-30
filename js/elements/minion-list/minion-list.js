@@ -16,13 +16,14 @@ define([
     var minion_list = {
         onCreate: function(){
             var that = this;
+            // Sync the list of minions every 30s
+            window.setInterval(function() {minions.sync(); },30000);
 
-            minions.get_result().then(function(result) {
-                that.innerHTML = template;
-
-                rivets.bind(that,
-                    {minions: {minions: _.values(result)}, vm: that.xtag});
-            });
+            minions.get_result()
+                .then(function(result) {
+                    that.innerHTML = template;
+                    rivets.bind(that,{minions: minions, vm: that.xtag});
+                }).done();
         }
     };
 

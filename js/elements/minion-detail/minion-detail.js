@@ -25,7 +25,7 @@ define([
                 modal.setAttribute('overlay','');
                 modal.setAttribute('esc-hide','');
                 rivets.bind(modal,
-                    {minion: minions.getMinion(this.dataset.mid), vm: this.xtag});
+                    {minion: minions.get_minion(this.dataset.mid), vm: this.xtag});
 
                 frag.appendChild(modal);
                 document.body.appendChild(frag);
@@ -35,7 +35,7 @@ define([
             click: function() {
                 this.detail();
             }
-        }
+        },
     };
 
     return minion_detail;
