@@ -38,24 +38,27 @@ define(function(require) {
                     data: [{client: 'local', tgt: '*', fun: 'grains.items'}]})
                 .get('return').get(0)
                 .then(this._update.bind(this))
-                .fin(function(){ this._promise = null; this.sync_toggle = ! this.sync_toggle }.bind(this));
+                .fin(function() {
+                    this._promise = null;
+                    this.sync_toggle = ! this.sync_toggle;
+                }.bind(this));
             }
 
             return this._promise;
         },
 
         /**
-         Return the cached minion by id
-         @return {Object}
-         **/
+        Return the cached minion by id
+        @return {Object}
+        **/
         get_minion: function(id) {
            return this._result[id];
         },
 
         /**
-         Return the list of all active minions
-         @return [Array]
-         **/
+        Return the list of all active minions
+        @return [Array]
+        **/
         get_minions: function() {
             return _.values(this._result);
         },

@@ -48,10 +48,10 @@ define(function(require) {
                 this.xtag.inprogress = true;
 
                 this.create_jid()
-                    .then(function() {
-                        that.xtag.inprogress = false;
-                    })
-                    .done();
+                .then(function() {
+                    that.xtag.inprogress = false;
+                })
+                .done();
             }
         }
     };

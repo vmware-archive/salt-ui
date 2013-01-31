@@ -26,12 +26,12 @@ define(function(require) {
                 this.toggleVisibility();
 
                 return xhr({method: 'GET', path: '/jobs/' + e.jid}, 700, 20)
-                    .get('return').get(0)
-                    .then(function (result) {
-                        drawtree.updateTree(result);
-                        that.toggleVisibility();
-                    })
-                    .done();
+                .get('return').get(0)
+                .then(function (result) {
+                    drawtree.updateTree(result);
+                    that.toggleVisibility();
+                })
+                .done();
             },
             toggleVisibility: function() {
                 xtag.toggleClass(this.firstChild, 'hide');

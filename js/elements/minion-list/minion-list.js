@@ -20,10 +20,10 @@ define([
             window.setInterval(function() {minions.sync(); },30000);
 
             minions.get_result()
-                .then(function(result) {
-                    that.innerHTML = template;
-                    rivets.bind(that,{minions: minions, vm: that.xtag});
-                }).done();
+            .then(function(result) {
+                that.innerHTML = template;
+                rivets.bind(that,{minions: minions, vm: that.xtag});
+            }).done();
         }
     };
 
