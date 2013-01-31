@@ -12,6 +12,8 @@ define(function(require) {
         _ = require('underscore');
 
     var minions = {
+
+        sync_toggle : false,
         // A cache of the last return from the API.
         _result: {},
         // An in-progress AJAX request
@@ -21,13 +23,12 @@ define(function(require) {
         Update the result cache
         **/
         _update: function(result) {
-            return _.extend(this._result, result);
+            this._result = result;
         },
 
         /**
         Fetch grains for all minions from the API
-
-        @return {Promise}
+        @returns {Promise}
         **/
         sync: function() {
             // If we get a call while a call is already running, return the
@@ -35,10 +36,9 @@ define(function(require) {
             if (this._promise === null) {
                 this._promise = xhr({method: 'POST', path: '/',
                     data: [{client: 'local', tgt: '*', fun: 'grains.items'}]})
-                .get('return')
-                .get(0)
+                .get('return').get(0)
                 .then(this._update.bind(this))
-                .fin(function(){ this._promise = null; }.bind(this));
+                .fin(function(){ this._promise = null; this.sync_toggle = ! this.sync_toggle }.bind(this));
             }
 
             return this._promise;
@@ -48,8 +48,16 @@ define(function(require) {
          Return the cached minion by id
          @return {Object}
          **/
-        getMinion: function(id) {
+        get_minion: function(id) {
            return this._result[id];
+        },
+
+        /**
+         Return the list of all active minions
+         @return [Array]
+         **/
+        get_minions: function() {
+            return _.values(this._result);
         },
 
         /**
@@ -61,7 +69,7 @@ define(function(require) {
                 return Q.fcall(function(){ return this._result; }.bind(this));
             }
             return this.sync();
-        }
+        },
     };
 
     return minions;
