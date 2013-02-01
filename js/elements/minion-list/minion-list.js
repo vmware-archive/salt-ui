@@ -15,13 +15,22 @@ define(function(require) {
     var minion_list = {
         onCreate: function(){
             var that = this;
+
             // Sync the list of minions every 30s
-            window.setInterval(function() {minions.sync(); },30000);
+            window.setInterval(function() {
+                minions.sync()
+                .then(function() {
+                    // Refresh the rivets binding to pick up additions/deletions
+                    if (that.xtag.view) that.xtag.view.sync();
+                });
+            },30000);
 
             minions.get_result()
-            .then(function(result) {
+            .then(function() {
                 that.innerHTML = template;
-                rivets.bind(that,{minions: minions, vm: that.xtag});
+                that.xtag.view = rivets.bind(that, {
+                    model: minions,
+                    vm: that.xtag});
             }).done();
         }
     };

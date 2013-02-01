@@ -1,3 +1,3 @@
-<x-minion-detail data-each-minion="minions:get_minions < .sync_toggle" data-data-mid="minion:id">
+<x-minion-detail data-each-minion="model._result | array" data-data-mid="minion:id">
     <i class="icon-circle running"></i> <span data-text="minion.id"></span>
 </x-minion-detail>
