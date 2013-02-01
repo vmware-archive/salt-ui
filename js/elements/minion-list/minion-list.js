@@ -5,13 +5,12 @@ each.
 @module saltui.elements
 @submmodule minion-list
 **/
-define([
-    'text!./template.html',
-    'models/minions',
-    'rivets',
-    'underscore'
-    ], function(template, minions, rivets, _) {
+define(function(require) {
     'use strict';
+
+    var template = require('text!./template.html'),
+        minions = require('models/minions'),
+        rivets = require('rivets');
 
     var minion_list = {
         onCreate: function(){
