@@ -17,6 +17,7 @@
   , "underscore": "v1.4.2"
   , "Watch.JS": "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
   , "x-tag-core": "https://raw.github.com/melanke/Watch.JS/master/src/watch.js#0.5.10"
+  , "font-awesome": "v3.0.2"
   }
 , "devDependencies":
   { "less": "1.3.3"
