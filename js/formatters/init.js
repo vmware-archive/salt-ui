@@ -9,6 +9,7 @@ define(function(require) {
     var rivets = require('rivets');
     var formatters = {
         length:         require('formatters/length'),
+        array:          require('formatters/array'),
     };
 
     // Register with rivets
