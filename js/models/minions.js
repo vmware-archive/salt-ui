@@ -13,7 +13,6 @@ define(function(require) {
 
     var minions = {
 
-        sync_toggle : false,
         // A cache of the last return from the API.
         _result: {},
         // An in-progress AJAX request
@@ -40,7 +39,6 @@ define(function(require) {
                 .then(this._update.bind(this))
                 .fin(function() {
                     this._promise = null;
-                    this.sync_toggle = ! this.sync_toggle;
                 }.bind(this));
             }
 
@@ -53,14 +51,6 @@ define(function(require) {
         **/
         get_minion: function(id) {
            return this._result[id];
-        },
-
-        /**
-        Return the list of all active minions
-        @return [Array]
-        **/
-        get_minions: function() {
-            return _.values(this._result);
         },
 
         /**
