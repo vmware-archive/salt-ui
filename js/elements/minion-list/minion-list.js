@@ -14,17 +14,9 @@ define(function(require) {
 
     var minion_list = {
         onCreate: function(){
+            this.js_interval = this.start_sync_results();
+
             var that = this;
-
-            // Sync the list of minions every 30s
-            window.setInterval(function() {
-                minions.sync()
-                .then(function() {
-                    // Refresh the rivets binding to pick up additions/deletions
-                    if (that.xtag.view) that.xtag.view.sync();
-                });
-            },30000);
-
             minions.get_result()
             .then(function() {
                 that.innerHTML = template;
@@ -32,6 +24,30 @@ define(function(require) {
                     model: minions,
                     vm: that.xtag});
             }).done();
+        },
+
+        events: {
+            on: function() {
+                this.js_interval = this.start_sync_results();
+            },
+            off: function() {
+                this.stop_sync_results();
+            }
+        },
+        methods: {
+            start_sync_results: function() {
+                return setInterval(function() {
+                    minions.sync()
+                        .then(function() {
+                            // Refresh the rivets binding to pick up additions/deletions
+                            if (that.xtag.view) that.xtag.view.sync();
+                        });
+                }, 10000);
+            },
+            stop_sync_results: function() {
+                clearInterval(this.js_interval);
+
+            }
         }
     };
 
