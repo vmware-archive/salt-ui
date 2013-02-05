@@ -35,6 +35,10 @@ define(function(require) {
             }
         },
         methods: {
+            /**
+             * Start JS Interval to refresh the list every 30 sec
+             *  TODO: 30s should be a global setting
+             */
             start_sync_results: function() {
                 return setInterval(function() {
                     minions.sync()
@@ -42,8 +46,11 @@ define(function(require) {
                             // Refresh the rivets binding to pick up additions/deletions
                             if (that.xtag.view) that.xtag.view.sync();
                         });
-                }, 10000);
+                }, 30000);
             },
+            /**
+             * Stop js interval
+             */
             stop_sync_results: function() {
                 clearInterval(this.js_interval);
 
