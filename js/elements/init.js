@@ -20,6 +20,7 @@ define(function(require) {
         minion_detail:  require('elements/minion-detail/minion-detail'),
         minion_list:    require('elements/minion-list/minion-list'),
         modal:          require('elements/modal/modal'),
+        toggle_switch:  require('elements/toggle-switch/toggle-switch'),
     };
 
     // Register the modules with X-Tag
