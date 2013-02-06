@@ -14,9 +14,8 @@ define(function(require) {
 
     var minion_list = {
         onCreate: function(){
-            this.js_interval = this.start_sync_results();
-
             var that = this;
+
             minions.get_result()
             .then(function() {
                 that.innerHTML = template;
@@ -28,6 +27,7 @@ define(function(require) {
 
         events: {
             on: function() {
+                minions.sync();
                 this.js_interval = this.start_sync_results();
             },
             off: function() {
@@ -41,11 +41,7 @@ define(function(require) {
              */
             start_sync_results: function() {
                 return setInterval(function() {
-                    minions.sync()
-                        .then(function() {
-                            // Refresh the rivets binding to pick up additions/deletions
-                            if (that.xtag.view) that.xtag.view.sync();
-                        });
+                    minions.sync();
                 }, 30000);
             },
             /**
