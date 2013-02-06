@@ -9,7 +9,6 @@ define(function() {
 
     var sorted = function(value) {
         if (Array.isArray(value)) {
-            console.log("sorting");
             return value.sort(
                 function(a, b) {
                     var idA=a.id.toLowerCase(),
