@@ -10,6 +10,7 @@ define(function(require) {
     var formatters = {
         length:         require('formatters/length'),
         array:          require('formatters/array'),
+        sortById:          require('formatters/sortById'),
     };
 
     // Register with rivets
