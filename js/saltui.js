@@ -14,6 +14,8 @@ requirejs.config({
         mixins: '../mixins',
         models: '../models',
         utils: '../utils',
+
+        fixtures: '../../fixtures',
         tmpl: '../../tmpl',
     },
     // shim non-AMD libs
