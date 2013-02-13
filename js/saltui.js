@@ -13,6 +13,7 @@ requirejs.config({
         formatters: '../formatters',
         mixins: '../mixins',
         models: '../models',
+        transforms: '../transforms',
         utils: '../utils',
 
         fixtures: '../../fixtures',
