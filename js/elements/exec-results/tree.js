@@ -73,15 +73,18 @@ define(function(require) {
           .style("fill", color)
           .on("click", click);
 
-      nodeEnter.append("svg:text")
+      var label = nodeEnter.append("svg:text")
           .attr("dy", 3.5)
-          .attr("dx", 5.5)
-          .text(function(d) {
-              if (d.val) {
-                  return d.name + ": " + d.val;
-              }
-              return d.name;
-          });
+          .attr("dx", 5.5);
+
+      label
+          .append('svg:tspan')
+          .attr('class', 'name')
+          .text(function(d) { return d.name; });
+
+      label.append('svg:tspan')
+          .attr('class', 'value')
+          .text(function(d) { return d.val || ''; });
 
       // Transition nodes to their new position.
       nodeEnter.transition()
@@ -172,5 +175,5 @@ define(function(require) {
             };
             update(root);
         }
-    }
+    };
 });
