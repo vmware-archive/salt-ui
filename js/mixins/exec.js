@@ -3,6 +3,10 @@ A mixin to add remote execution to an element.
 
 Requires a lowstate attribute on the element that returns a lowstate data
 structure suitable to POST to the API.
+
+@event exec
+@param {Number} jid The job ID of the execution
+@param {Object} lowstate The lowstate used to make the execution
 **/
 define(function(require) {
     'use strict';
@@ -33,7 +37,10 @@ define(function(require) {
                     data: [this.lowstate]})
                 .get(0).get('return')
                 .then(function(result) {
-                    xtag.fireEvent(that, 'exec', {jid: result.jid});
+                    xtag.fireEvent(that, 'exec', {
+                        jid: result.jid,
+                        lowstate: that.lowstate,
+                    });
                 });
             }
         }
