@@ -86,7 +86,7 @@ define(function(require) {
             // promise for the one already running
             if (this._promise === null) {
                 this._promise = xhr({method: 'POST', path: '/',
-                    data: [{client: 'runner', fun: 'sys.doc'}]})
+                    data: [{client: 'runner', fun: 'doc.execution'}]})
                 .get('return')
                 .get(0)
                 .then(this._update.bind(this))
