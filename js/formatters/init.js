@@ -7,10 +7,11 @@ define(function(require) {
     'use strict';
 
     var rivets = require('rivets');
+
     var formatters = {
-        length:         require('formatters/length'),
-        array:          require('formatters/array'),
-        sortById:          require('formatters/sortById'),
+        array:              require('./array'),
+        length:             require('./length'),
+        sortById:           require('./sortById'),
     };
 
     // Register with rivets
