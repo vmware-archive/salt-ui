@@ -1,0 +1,19 @@
+<div class="navbar">
+    <div class="navbar-inner">
+
+        <a class="brand" href="#">
+            <img src="/img/logo.png" alt="" width="75">
+            Salt Stack
+        </a>
+
+        <ul class="nav">
+            <li data-each-route="vm.routes | array | pluck name">
+            <a
+                data-href="route.url"
+                data-text="route.name"
+                data-class-active="vm.active_url"></a>
+            </li>
+        </ul>
+
+    </div>
+</div>
