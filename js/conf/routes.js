@@ -16,6 +16,7 @@ define(function(require) {
 
     route_map.add('exec', {
         url: '#/exec',
+        name: 'Execution',
         tmpl: require('text!tmpl/exec.html'),
         type: 'full',
     });
