@@ -1,6 +1,10 @@
 <form class="form-search">
     <div class="input-prepend">
-        <span class="add-on">local</span>
+        <select data-value="vm.client">
+            <option value="local">local</option>
+            <option value="wheel">wheel</option>
+            <option value="runner">runner</option>
+        </select>
         <input type="text" class="input-mini"
             placeholder="tgt"
             data-input="vm.tgt">
