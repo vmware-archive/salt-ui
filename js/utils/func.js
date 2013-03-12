@@ -8,7 +8,8 @@ define(function() {
     'use strict';
 
     var __slice = Array.prototype.slice,
-        __push = Array.prototype.push;
+        __push = Array.prototype.push,
+        __map = Array.prototype.map;
 
     /**
     merge
@@ -129,6 +130,37 @@ define(function() {
     });
 
     /**
+    Turns any function into a mapper
+
+        splat(function (x) { return x * x })([1, 2, 3, 4])
+        //=> [1, 4, 9, 16]
+
+    From http://allong.es; MIT License
+    **/
+    function splat (fn) {
+        return function (list) {
+            return __map.call(list,
+                function(something) { return fn(something) });
+        };
+    }
+
+    /**
+    Grab an attribute from an object
+
+    From http://allong.es; MIT License
+    **/
+    function get (attr) {
+        return function (object) { return object[attr] };
+    }
+
+    /**
+    Grab an attribute from a list of objects
+
+    From http://allong.es; MIT License
+    **/
+    var pluck = compose(splat, get);
+
+    /**
     Send a message/invoke a method on the receiver.
 
     From http://allong.es; MIT License
@@ -229,12 +261,15 @@ define(function() {
         curry: curry,
         extend: extend,
         fluent: fluent,
+        get: get,
         identity: identity,
         maybe: maybe,
         memoized: memoized,
         merge: merge,
+        pluck: pluck,
         send: send,
         sendWithCtx: sendWithCtx,
+        splat: splat,
         variadic: variadic,
         wrap: wrap,
     };
