@@ -21,6 +21,7 @@ define(function(require) {
         View-model info of interest to this element or it's children
         **/
         onCreate: function() {
+            this.xtag.client = 'local';
             this.xtag.tgt = '*';
             this.xtag.fun = '';
             this.xtag.arg = '';
@@ -32,7 +33,7 @@ define(function(require) {
         getters: {
             lowstate: function() {
                 return {
-                    client: 'local',
+                    client: this.xtag.client,
                     tgt: this.xtag.tgt,
                     fun: this.xtag.fun,
                     arg: this.xtag.arg ? this.xtag.arg.split(' ') : []
