@@ -27,6 +27,13 @@ define(function(require) {
         type: 'full',
     });
 
+    route_map.add('keys', {
+        url: '#/keys',
+        name: 'Keys',
+        tmpl: require('text!tmpl/keys.html'),
+        type: 'full',
+    });
+
     route_map.add('login', {
         url: '#/login',
         tmpl: '<x-login></x-login>',
