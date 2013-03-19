@@ -21,35 +21,35 @@ define(function(require) {
                 that.innerHTML = template;
                 that.xtag.view = rivets.bind(that, {
                     model: minions,
+                    elem: that,
                     vm: that.xtag});
             }).done();
         },
 
-        events: {
-            on: function() {
-                minions.sync();
-                this.js_interval = this.start_sync_results();
-            },
-            off: function() {
-                this.stop_sync_results();
-            }
-        },
         methods: {
+            toggle_refresh: function(e) {
+                var inr = parseInt(e.target.dataset.interval, 10);
+
+                if (!this.xtag.refresh) {
+                    this.xtag.refresh = this.start_sync_results(inr);
+                } else {
+                    this.xtag.refresh = this.stop_sync_results();
+                }
+            },
+
             /**
-             * Start JS Interval to refresh the list every 30 sec
-             *  TODO: 30s should be a global setting
-             */
-            start_sync_results: function() {
-                return setInterval(function() {
-                    minions.sync();
-                }, 30000);
+            Start JS Interval to refresh the list every 30 sec
+            **/
+            start_sync_results: function(interval) {
+                minions.sync(); // kick off initial run before starting timer
+                return setInterval(function() { minions.sync() }, interval);
             },
             /**
-             * Stop js interval
-             */
+            Stop js interval
+            **/
             stop_sync_results: function() {
-                clearInterval(this.js_interval);
-
+                clearInterval(this.xtag.refresh);
+                return null;
             }
         }
     };

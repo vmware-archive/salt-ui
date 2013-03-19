@@ -1,4 +1,10 @@
-<x-toggle-switch label="Synchronize:" initial-value="off"></x-toggle-switch>
+<h2 class="nav-header">Minions
+    <button class="btn btn-mini pull-right"
+        data-interval="30000"
+        data-on-click="elem.toggle_refresh"
+        data-class-active="vm.refresh"
+        ><i class="icon-refresh"></i></button>
+</h2>
 
 <x-minion-detail data-each-minion="model._result | array | sortById" data-data-mid="minion:id">
     <i class="icon-circle running"></i> <span data-text="minion.id"></span>
