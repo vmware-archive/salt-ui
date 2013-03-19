@@ -21,7 +21,6 @@ define(function(require) {
         minion_list:    require('elements/minion-list/minion-list'),
         modal:          require('elements/modal/modal'),
         nav:            require('elements/nav/nav'),
-        toggle_switch:  require('elements/toggle-switch/toggle-switch'),
     };
 
     // Register the modules with X-Tag
