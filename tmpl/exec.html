@@ -4,8 +4,6 @@
 
     <div class="row-fluid">
         <div class="span2 sidebar">
-            <h2 class="nav-header">Minions</h2>
-            <x-minion-filter></x-minion-filter>
             <x-minion-list>
                 <i class="icon-spinner icon-spin"></i>
                 Loading minions ...
@@ -13,15 +11,8 @@
         </div>
 
         <div class="span10 main">
-            <div>
-                <h2>Execution</h2>
-                <x-exec></x-exec>
-            </div>
-
-            <div>
-                <h2>Results</h2>
-                <x-exec-results></x-exec-results>
-            </div>
+            <x-exec></x-exec>
+            <x-exec-results></x-exec-results>
         </div>
     </div>
 
