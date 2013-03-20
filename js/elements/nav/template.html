@@ -7,11 +7,14 @@
         </a>
 
         <ul class="nav">
-            <li data-each-route="vm.routes | array | pluck name">
+            <li
+                data-each-route="vm.routes | array"
+                data-current-active="route.url"
+                >
             <a
                 data-href="route.url"
                 data-text="route.name"
-                data-class-active="vm.active_url"></a>
+                ></a>
             </li>
         </ul>
 
