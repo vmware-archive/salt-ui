@@ -8,6 +8,7 @@ define(function(require) {
 
     var rivets = require('rivets');
     var binders = {
+        'current-*':    require('binders/current'),
         input:          require('binders/input'),
     };
 
