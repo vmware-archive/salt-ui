@@ -10,6 +10,7 @@ define(function(require) {
 
     var formatters = {
         array:              require('./array'),
+        ifattr:             require('./ifattr'),
         length:             require('./length'),
         sortById:           require('./sortById'),
     };
