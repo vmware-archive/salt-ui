@@ -33,7 +33,7 @@ define(function(require) {
 
                 el.hide_error();
                 el.start_spinner();
-                xhr({method: 'POST', path: '/login', data: form_data})
+                xhr('POST', '/login', form_data)
                 .then(
                     function(result) {
                         xtag.fireEvent(that, 'x-login-authed', result);

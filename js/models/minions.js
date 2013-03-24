@@ -33,8 +33,8 @@ define(function(require) {
             // If we get a call while a call is already running, return the
             // promise for the one already running
             if (this._promise === null) {
-                this._promise = xhr({method: 'POST', path: '/',
-                    data: [{client: 'local', tgt: '*', fun: 'grains.items'}]})
+                this._promise = xhr('POST', '/',
+                    [{client: 'local', tgt: '*', fun: 'grains.items'}])
                 .get('return').get(0)
                 .then(this._update.bind(this))
                 .fin(function() {
