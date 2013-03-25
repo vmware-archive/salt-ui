@@ -9,7 +9,7 @@ define(function(require) {
 
     var template = require('text!./template.html'),
         xhr = require('utils/xhr'),
-        rivets = require('rivets'),
+        f = require('utils/func'),
         drawtree = require('./tree'),
         xtag = require('x-tag');
 
@@ -25,7 +25,9 @@ define(function(require) {
                 var that = this;
                 this.toggleVisibility();
 
-                return xhr({method: 'GET', path: '/jobs/' + e.jid}, 700, 20)
+                var get_jid = f.applyLeft(xhr, 'GET', '/jobs/' + e.jid);
+
+                return f.retry_promise(get_jid, 700, 20)
                 .get('return').get(0)
                 .then(function (result) {
                     drawtree.updateTree(result);
