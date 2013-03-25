@@ -7,6 +7,8 @@ var ƒ = require('utils/func');
 define(function() {
     'use strict';
 
+    var Q = require('q');
+
     var __slice = Array.prototype.slice,
         __push = Array.prototype.push,
         __map = Array.prototype.map;
@@ -253,6 +255,33 @@ define(function() {
         };
     }
 
+    /**
+    Call a function that returns a promise. If the 'return' portion of the
+    result is empty, call that function a specified number of times again
+    looking for non-empty results.
+
+    @param {Function} func A partially applied function that will return a
+        promise when called
+    @param {Number} [timeout] Time to wait between request retries
+    @param {Number} [retry] If the response is empty, retry the request
+
+    @return {Promise}
+    **/
+    function retry_promise(func, timeout, retries) {
+        return func().then(function(result) {
+            if (typeof(result) !== 'object') return result;
+            if (!result.return || result.return.length < 1) return result;
+
+            if (Object.keys(result['return'][0]).length === 0 && retries > 0) {
+                return Q.delay(timeout).then(function() {
+                    return retry_promise(func, timeout, retries - 1);
+                });
+            }
+
+            return result;
+        });
+    }
+
     return {
         applyFirst: applyFirst,
         applyLeft: applyLeft,
@@ -272,6 +301,7 @@ define(function() {
         splat: splat,
         variadic: variadic,
         wrap: wrap,
+        retry_promise: retry_promise,
     };
 
 });
