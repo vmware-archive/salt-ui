@@ -4,7 +4,7 @@ Functional-style helpers cobbled together from many-a-place
 var ƒ = require('utils/func');
 ƒ.merge(obj1, obj2});
 **/
-define(function() {
+define(function(require) {
     'use strict';
 
     var Q = require('q');
