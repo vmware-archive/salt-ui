@@ -37,7 +37,8 @@ define(function(require) {
                 .then(
                     function(result) {
                         xtag.fireEvent(that, 'x-login-authed', result);
-                        window.location.hash = routes.get_url('exec'); },
+                        window.history.back();
+                    },
                     function (result) {
                         el.show_error();
                     }
