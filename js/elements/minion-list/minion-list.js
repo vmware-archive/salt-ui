@@ -18,8 +18,8 @@ define(function(require) {
         onCreate: function(){
             var that = this;
 
-            minions.get_result().then(function() {
-                that.xtag.minions = minions.result;
+            minions.get_result().then(function(result) {
+                that.xtag.minions = result;
                 rivets.bind(that, {el: that, vm: that.xtag});
             }).done();
         },

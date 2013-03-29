@@ -11,13 +11,12 @@ define(function(require) {
 
     function Model() {
         this.lowstate = [{client: 'local', tgt: '*', fun: 'grains.items'}];
-        this.result = {};
 
         /**
         Update the result cache
         **/
         this.update = function(result) {
-            this.result = result['return'][0];
+            return result['return'][0];
         };
 
         /**
