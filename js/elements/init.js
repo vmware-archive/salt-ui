@@ -12,6 +12,9 @@ define(function(require) {
     'use strict';
 
     var xtag = require('x-tag');
+
+    require('./mixins/init'); // make sure x-tag mixins are available
+
     var elem_map = {
         exec:           require('elements/exec/exec'),
         dashexec:       require('elements/dashexec/dashexec'),

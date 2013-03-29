@@ -11,7 +11,6 @@ requirejs.config({
         crystals: '../crystals',
         elements: '../elements',
         formatters: '../formatters',
-        mixins: '../mixins',
         models: '../models',
         transforms: '../transforms',
         utils: '../utils',
@@ -40,7 +39,6 @@ requirejs([
     'binders/init',
     'formatters/init',
     'models/init',
-    'mixins/init',
     'elements/init',
     ], function(conf) {
     'use strict';

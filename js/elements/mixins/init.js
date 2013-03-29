@@ -6,8 +6,8 @@ define(function(require) {
 
     var xtag = require('x-tag');
     var mixins = {
-        datamodel:      require('mixins/datamodel'),
-        exec:           require('mixins/exec'),
+        datamodel:      require('./datamodel'),
+        exec:           require('./exec'),
     };
 
     // Register with X-Tag
