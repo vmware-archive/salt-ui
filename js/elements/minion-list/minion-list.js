@@ -28,7 +28,9 @@ define(function(require) {
 
         methods: {
             toggle_refresh: function(e) {
-                var inr = parseInt(e.target.dataset.interval, 10);
+                // Seems there can be a race condition obtaining this value,
+                // thus the fallback. More investigation needed.
+                var inr = parseInt(e.target.dataset.interval, 10) || 30000;
 
                 if (!this.xtag.refresh) {
                     this.xtag.refresh = this.start_sync_results(inr);
