@@ -6,7 +6,6 @@ define(function(require) {
 
     var xtag = require('x-tag');
     var mixins = {
-        datamodel:      require('./datamodel'),
         exec:           require('./exec'),
     };
 
