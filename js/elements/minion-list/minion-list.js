@@ -13,16 +13,14 @@ define(function(require) {
         rivets = require('rivets');
 
     var minion_list = {
+        content: template,
+
         onCreate: function(){
             var that = this;
 
-            minions.get_result()
-            .then(function() {
-                that.innerHTML = template;
-                that.xtag.view = rivets.bind(that, {
-                    model: minions,
-                    elem: that,
-                    vm: that.xtag});
+            minions.get_result().then(function() {
+                that.xtag.minions = minions.result;
+                rivets.bind(that, {el: that, vm: that.xtag});
             }).done();
         },
 
