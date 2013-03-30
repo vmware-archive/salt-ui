@@ -40,6 +40,13 @@ define(function(require) {
     function identity(x) { return x }
 
     /**
+    Check a type and a value for equality
+    **/
+    var isVal = curry(function(type, val) { return val === type });
+    var isTrue = isVal(true);
+    var isNull = isVal(null);
+
+    /**
     Extract the arguments of a function as an array
 
     From Prototype.js; MIT License
@@ -305,6 +312,9 @@ define(function(require) {
         fluent: fluent,
         get: get,
         identity: identity,
+        isVal: isVal,
+        isTrue: isTrue,
+        isNull: isNull,
         maybe: maybe,
         memoized: memoized,
         merge: merge,
