@@ -183,6 +183,19 @@ define(function(require) {
     }
 
     /**
+    Like send() but for methods (preserves context)
+
+    From http://allong.es; MIT License
+    **/
+    function invoke (fn) {
+        var args = __slice.call(arguments, 1);
+
+        return function (instance) {
+            return fn.apply(instance, args);
+        };
+    }
+
+    /**
     transforms a polyadic function into a chain of unary
     functions
 
@@ -297,6 +310,7 @@ define(function(require) {
         merge: merge,
         pluck: pluck,
         send: send,
+        invoke: invoke,
         sendWithCtx: sendWithCtx,
         splat: splat,
         variadic: variadic,
