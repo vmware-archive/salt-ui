@@ -136,9 +136,14 @@ define(function(require) {
     From http://allong.es; MIT License
 
     Applies one or more arguments in the leftmost positions
+
+    If the function argument is a string it will be treated as a method on the
+    current object.
     **/
     var applyLeft = variadic( function (fn, args) {
+        var ismeth = typeof(fn) === 'string';
         return variadic( function (remainingArgs) {
+            if (ismeth) fn = this[fn];
             return fn.apply(this, args.concat(remainingArgs));
         });
     });
