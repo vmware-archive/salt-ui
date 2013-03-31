@@ -141,9 +141,8 @@ define(function(require) {
     current object.
     **/
     var applyLeft = variadic( function (fn, args) {
-        var ismeth = typeof(fn) === 'string';
         return variadic( function (remainingArgs) {
-            if (ismeth) fn = this[fn];
+            if (typeof(fn) === 'string') fn = this[fn];
             return fn.apply(this, args.concat(remainingArgs));
         });
     });
