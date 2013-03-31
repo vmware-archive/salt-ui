@@ -40,6 +40,11 @@ define(function(require) {
     function identity(x) { return x }
 
     /**
+    Returns the opposite of the given arg
+    **/
+    function not(val) { return ! val }
+
+    /**
     Check a type and a value for equality
     **/
     var isVal = curry(function(type, val) { return val === type });
@@ -312,6 +317,7 @@ define(function(require) {
         fluent: fluent,
         get: get,
         identity: identity,
+        not: not,
         isVal: isVal,
         isTrue: isTrue,
         isNull: isNull,
