@@ -8,10 +8,13 @@ define(function(require) {
 
     var rivets = require('rivets');
 
+    var f = require('utils/func');
+
     var formatters = {
         array:              require('./array'),
         ifattr:             require('./ifattr'),
         length:             require('./length'),
+        not:                f.not,
         sortById:           require('./sortById'),
     };
 
