@@ -4,9 +4,11 @@ Description
 define(function(require) {
     'use strict';
 
+    var asEvented = require('asevented');
+
     var withCachedSync = require('./mixins/withCachedSync');
 
-    function Model() {
+    function Keys() {
         this.lowstate = [
             {client: 'wheel', fun: 'key.finger', match: '*'},
             {client: 'wheel', fun: 'key.list_all'},
@@ -36,7 +38,11 @@ define(function(require) {
         });
     }
 
-    var model = new Model();
-    withCachedSync.call(model);
-    return model;
+    /**
+    Apply mixins
+    **/
+    withCachedSync.call(Keys.prototype);
+    asEvented.call(Keys.prototype);
+
+    return new Keys();
 });
