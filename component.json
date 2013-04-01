@@ -6,4 +6,23 @@
   { "type" : "git"
   , "url" : "git://github.com/saltstack/salt-ui.git"
   }
+, "dependencies":
+  { "requirejs": "2.1.5"
+  , "requirejs-text": "2.0.5"
+  , "requirejs-domready": "2.0.1"
+
+  , "d3": "3.0.4"
+  , "q": "v0.8.11"
+  , "pathjs": "2fe037d6"
+  , "rivets": "v0.4.5"
+  , "Watch.JS": "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
+  , "x-tag": "https://raw.github.com/mozilla/x-tag/1a9121f89bc7ca8f0f69d7eb5983732185c24039/x-tag.js"
+
+  , "font-awesome": "v3.0.2"
+
+  , "asEvented": "https://raw.github.com/mkuklis/asEvented/v0.4.2/asevented.js"
+  }
+, "devDependencies":
+  { "less.js": "1.3.3"
+  }
 }
