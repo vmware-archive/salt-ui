@@ -8,8 +8,7 @@ define(function(require) {
     'use strict';
 
     var xhr = require('utils/xhr'),
-        Q = require('q'),
-        _ = require('underscore');
+        Q = require('q');
 
     var sysdoc = {
         // A cache of the last query

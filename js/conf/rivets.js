@@ -6,8 +6,11 @@ http://jsfiddle.net/HCrb2/3/
 @module saltui.conf
 @submodule rivets
 **/
-define(['rivets', 'underscore', 'watch'], function(rivets, _, Watch) {
+define(function(require) {
     'use strict';
+
+    var rivets = require('rivets'),
+        Watch = require('watch');
 
     rivets.configure({
         adapter: {
