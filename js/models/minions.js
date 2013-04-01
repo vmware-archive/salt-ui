@@ -9,7 +9,7 @@ define(function(require) {
 
     var withCachedSync = require('./mixins/withCachedSync');
 
-    function Model() {
+    function Minions() {
         this.lowstate = [{client: 'local', tgt: '*', fun: 'grains.items'}];
 
         /**
@@ -28,7 +28,10 @@ define(function(require) {
         };
     }
 
-    var model = new Model();
-    withCachedSync.call(model);
-    return model;
+    /**
+    Apply mixins
+    **/
+    withCachedSync.call(Minions.prototype);
+
+    return new Minions();
 });
