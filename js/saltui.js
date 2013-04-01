@@ -20,7 +20,6 @@ requirejs.config({
     },
     // shim non-AMD libs
     shim: {
-        'underscore': {exports: '_'},
         'd3': {exports: 'd3'},
     },
     // DEBUG: bust caches
