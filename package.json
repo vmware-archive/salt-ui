@@ -1,25 +1,9 @@
-{ "author": "Seth House"
-, "name": "salt-ui"
+{ "name": "salt-ui"
 , "description": "A graphical frontend to Salt"
 , "license": "Apache 2.0"
 , "version": "0.5.0"
 , "repository":
   { "type" : "git"
   , "url" : "git://github.com/saltstack/salt-ui.git"
-  }
-, "dependencies":
-  { "d3": "3.0.4"
-  , "domReady": "https://raw.github.com/requirejs/domReady/latest/domReady.js"
-  , "pathjs": "2fe037d6"
-  , "q": "v0.8.11"
-  , "rivets": "v0.4.5"
-  , "text": "https://raw.github.com/requirejs/text/latest/text.js"
-  , "underscore": "v1.4.2"
-  , "Watch.JS": "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
-  , "x-tag-core": "https://raw.github.com/melanke/Watch.JS/master/src/watch.js#0.5.10"
-  , "font-awesome": "v3.0.2"
-  }
-, "devDependencies":
-  { "less": "1.3.3"
   }
 }
