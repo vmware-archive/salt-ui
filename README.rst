@@ -13,3 +13,19 @@ Requirements
 ============
 
 Support for ES5 is required. This means any modern browser or > IE9.
+
+Development
+===========
+
+To develop on salt-ui itself:
+
+1.  Clone the salt-ui repository
+2.  Download required third-party libs::
+
+        cd /path/to/salt-ui
+        cd ./js/libs
+        curl -K libs.txt
+
+3.  (Optional) Verify third-party libs::
+
+        md5sum --check --quiet md5sums.txt
