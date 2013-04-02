@@ -11,6 +11,7 @@ define(function(require) {
     require('./dataset');
     require('./string');
     require('./supplant');
+    require('document.register');
 
     return null;
 });

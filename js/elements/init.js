@@ -11,10 +11,6 @@ This module registers each element with X-Tag. Each element is prefixed with
 define(function(require) {
     'use strict';
 
-    var xtag = require('x-tag');
-
-    require('./mixins/init'); // make sure x-tag mixins are available
-
     var elem_map = {
         exec:           require('elements/exec/exec'),
         dashexec:       require('elements/dashexec/dashexec'),
@@ -28,7 +24,7 @@ define(function(require) {
 
     // Register the modules with X-Tag
     Object.keys(elem_map).forEach(function(val) {
-        xtag.register('x-' + val.replace(/_/, '-'), elem_map[val]);
+        document.register('x-' + val.replace(/_/, '-'), elem_map[val]);
     });
 
     return elem_map;

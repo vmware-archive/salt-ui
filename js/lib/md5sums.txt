@@ -1,4 +1,5 @@
 745351ac64c02dee0577c27740d77759  d3.js
+f40fb75bdeb6e099dde0098eab31e47a  document.register.js
 19ff0e97093d58cd893fe72534a98b8b  domReady.js
 e089c44fc0d9c558a6d68c786fb07d43  less.js
 f54542eedd2c150bbb62e75aee2ee705  path.js
@@ -7,4 +8,3 @@ f54542eedd2c150bbb62e75aee2ee705  path.js
 e8410c678831d7095c3ae4e3f473e219  rivets.js
 c74da9987e8c5fe8f74de40d6a9f5f77  text.js
 d77345469346bde53bb9f03e66d64bed  watch.js
-9f1df63a9b826a9219313d9b9c181d43  x-tag.js

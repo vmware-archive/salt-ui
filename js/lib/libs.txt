@@ -22,7 +22,7 @@
 --url "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
 -O
 
---url "https://raw.github.com/mozilla/x-tag/1a9121f/x-tag.js"
+--url "https://raw.github.com/mozilla/web-components/9280493/src/document.register.js"
 -O
 
 --url "https://raw.github.com/mbostock/d3/v3.1.4/d3.js"
