@@ -11,7 +11,6 @@ define(function(require) {
         shims:          require('conf/shims'),
         routes:         require('conf/routes'),
         rivets:         require('conf/rivets'),
-        templates:      require('conf/templates'),
     };
 
     return configs;
