@@ -21,6 +21,8 @@ requirejs.config({
     // shim non-AMD libs
     shim: {
         'd3': {exports: 'd3'},
+        'rivets': {exports: 'rivets'},
+        'path': {exports: 'Path'},
     },
     // DEBUG: bust caches
     urlArgs: 'bust=' +  (new Date()).getTime(),
