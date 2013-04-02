@@ -4,8 +4,6 @@ Description
 define(function(require) {
     'use strict';
 
-    var asEvented = require('asevented');
-
     var withCachedSync = require('./mixins/withCachedSync');
 
     function Keys() {
@@ -42,7 +40,6 @@ define(function(require) {
     Apply mixins
     **/
     withCachedSync.call(Keys.prototype);
-    asEvented.call(Keys.prototype);
 
     return new Keys();
 });

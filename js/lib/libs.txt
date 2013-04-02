@@ -25,9 +25,6 @@
 --url "https://raw.github.com/mozilla/x-tag/1a9121f/x-tag.js"
 -O
 
---url "https://raw.github.com/mkuklis/asEvented/v0.4.2/asevented.js"
--O
-
 --url "https://raw.github.com/mbostock/d3/v3.1.4/d3.js"
 -O
 
