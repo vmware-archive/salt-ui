@@ -1,16 +1,13 @@
 /**
-Any browser shims needed to run the salt-ui code
+Polyfill for dataset support in IE 9 & 10
+
+https://gist.github.com/4093766
+
+Licensed under the X11/MIT License
 **/
 define(function(require) {
     'use strict';
 
-    /**
-    Add dataset support for IE 9 & 10
-
-    https://gist.github.com/4093766
-
-    Licensed under the X11/MIT License
-    */
     if (!document.documentElement.dataset &&
              // FF is empty while IE gives empty object
             (!Object.getOwnPropertyDescriptor(Element.prototype, 'dataset')  ||
