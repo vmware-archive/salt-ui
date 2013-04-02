@@ -1,0 +1,38 @@
+# Third-party dependencies for salt-ui
+# Run with ``curl -K libs.txt``
+# Check with ``md5sum --check --quiet md5sums.txt``
+
+-sS
+
+--url "http://requirejs.org/docs/release/2.1.5/comments/require.js"
+-O
+
+--url "https://raw.github.com/requirejs/domReady/latest/domReady.js"
+-O
+
+--url "https://raw.github.com/requirejs/text/latest/text.js"
+-O
+
+--url "https://raw.github.com/mtrpcic/pathjs/2fe037d6/path.js"
+-O
+
+--url "https://raw.github.com/mikeric/rivets/v0.4.5/lib/rivets.js"
+-O
+
+--url "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
+-O
+
+--url "https://raw.github.com/mozilla/x-tag/1a9121f/x-tag.js"
+-O
+
+--url "https://raw.github.com/mkuklis/asEvented/v0.4.2/asevented.js"
+-O
+
+--url "https://raw.github.com/mbostock/d3/v3.1.4/d3.js"
+-O
+
+--url "https://raw.github.com/kriskowal/q/v0.8.11/q.js"
+-O
+
+--url "https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.3.js"
+-o "less.js"
