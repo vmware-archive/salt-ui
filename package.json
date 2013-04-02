@@ -1,7 +1,7 @@
 { "name": "salt-ui"
 , "description": "A graphical frontend to Salt"
 , "license": "Apache 2.0"
-, "version": "0.5.0"
+, "version": "0.5.5"
 , "repository":
   { "type" : "git"
   , "url" : "git://github.com/saltstack/salt-ui.git"
