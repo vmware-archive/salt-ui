@@ -7,8 +7,7 @@ define(function(require) {
     'use strict';
 
     var configs = {
-        polyfills:      require('conf/polyfills'),
-        shims:          require('conf/shims'),
+        shims:          require('conf/shims/init'),
         routes:         require('conf/routes'),
         rivets:         require('conf/rivets'),
     };
