@@ -31,5 +31,8 @@
 --url "https://raw.github.com/kriskowal/q/v0.8.11/q.js"
 -O
 
+--url "https://raw.github.com/PuerkitoBio/advice/51d2124/lib/advice.js"
+-O
+
 --url "https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.3.js"
 -o "less.js"
