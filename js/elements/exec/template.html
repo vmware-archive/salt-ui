@@ -1,4 +1,6 @@
-<form class="form-search">
+<x-context data-vm="exec">
+
+<form class="form-search" data-on-submit="vm.submit">
     <select data-value="vm.client" class="input-small">
         <option value="local">local</option>
         <option value="wheel">wheel</option>
@@ -32,3 +34,5 @@
         </ul>
     </div>
 </form>
+
+</x-context>

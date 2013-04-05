@@ -12,8 +12,10 @@ requirejs.config({
         elements: '../elements',
         formatters: '../formatters',
         models: '../models',
+        shims: '../shims',
         transforms: '../transforms',
         utils: '../utils',
+        viewmodels: '../viewmodels',
 
         fixtures: '../../fixtures',
         tmpl: '../../tmpl',
@@ -31,12 +33,19 @@ requirejs.config({
 /**
 Main salt-ui entry-point
 
-Ensure all the init files have been loaded and start the routes listener
+Load shims first then load all the init files. Finally start the routes
+listener.
 
 @module saltui
 **/
 requirejs([
     'conf/init',
+
+    'document.register',
+    'shims/dataset',
+    'shims/string',
+    'shims/supplant',
+
     'binders/init',
     'formatters/init',
     'models/init',

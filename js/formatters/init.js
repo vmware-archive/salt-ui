@@ -13,6 +13,7 @@ define(function(require) {
     var formatters = {
         array:              require('./array'),
         ifattr:             require('./ifattr'),
+        keyval:             require('./keyval'),
         length:             require('./length'),
         not:                f.not,
         sortById:           require('./sortById'),

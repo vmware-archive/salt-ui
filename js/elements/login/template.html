@@ -1,30 +1,42 @@
-<form class="form-horizontal">
+<x-context data-vm="login">
+
+<form class="form-horizontal" data-on-submit="vm.submit">
     <div class="modal">
+
         <div class="modal-header">
             <h1>Log in to Salt UI</h1>
         </div>
+
         <div class="modal-body ">
             <div class="control-group">
                 <label class="control-label" for="username">Username</label>
                 <div class="controls">
-                    <input type="text" name="username" data-input="login.username" autofocus>
+                    <input type="text" name="username" data-input="vm.username" autofocus>
                 </div>
                 <label class="control-label" for="password">Password</label>
                 <div class="controls">
-                    <input type="password" name="password" data-input="login.password">
+                    <input type="password" name="password" data-input="vm.password">
                 </div>
                 <label class="control-label" for="eauth">Eauth</label>
                 <div class="controls">
-                    <input type="text" name="eauth" data-input="login.eauth">
+                    <input type="text" name="eauth" data-input="vm.eauth">
                 </div>
             </div>
         </div>
+
         <div class="modal-footer">
-            <span class="hide text-error">Authentication failed</span>
+            <span class="text-error"
+                data-show="vm.errormsg"
+                data-text="vm.errormsg"></span>
+
             <button type="submit" class="btn btn-primary">
-                <i class="icon-spinner"></i>
+                <i class="icon-spinner"
+                    data-class-icon-spin="vm.inprogress"></i>
                 Log in
             </button>
         </div>
+
     </div>
 </form>
+
+</x-context>
