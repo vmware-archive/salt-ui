@@ -12,6 +12,7 @@ define(function(require) {
     'use strict';
 
     var elem_map = {
+        context:        require('elements/context/context'),
         exec:           require('elements/exec/exec'),
         dashexec:       require('elements/dashexec/dashexec'),
         exec_results:   require('elements/exec-results/exec-results'),
