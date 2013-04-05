@@ -1,7 +1,9 @@
+<x-context data-vm="minions">
+
 <h2 class="nav-header">Minions
     <button class="btn btn-mini pull-right"
         data-interval="30000"
-        data-on-click="el.toggle_refresh"
+        data-on-click="vm.toggle_refresh"
         data-class-active="vm.refresh"
         ><i class="icon-refresh"></i></button>
 </h2>
@@ -9,3 +11,5 @@
 <x-minion-detail data-each-minion="vm.minions | array | sortById" data-data-mid="minion:id">
     <i class="icon-circle running"></i> <span data-text="minion.id"></span>
 </x-minion-detail>
+
+</x-context>
