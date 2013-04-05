@@ -12,7 +12,9 @@ define(function(require) {
     var el = {
         'lifecycle': {
             created: function(){
-                if (! this.dataset.vm || ! viewmodels[this.dataset.vm]) return;
+                if (! this.dataset.vm || ! viewmodels[this.dataset.vm]) {
+                    throw new Error("View-model not found: "+ this.dataset.vm);
+                }
 
                 this.__view__ = rivets.bind(this,
                     {vm: viewmodels[this.dataset.vm]});
