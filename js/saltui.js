@@ -15,6 +15,7 @@ requirejs.config({
         shims: '../shims',
         transforms: '../transforms',
         utils: '../utils',
+        viewmodels: '../viewmodels',
 
         fixtures: '../../fixtures',
         tmpl: '../../tmpl',
