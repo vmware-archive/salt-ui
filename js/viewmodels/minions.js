@@ -9,6 +9,8 @@ define(function(require) {
     var vm = {
         minions: null,
         refresh: null,
+        minion_detail: null,
+        minion_detail_id: null,
 
         toggle_refresh: function(e) {
             // Seems there can be a race condition obtaining this value,
@@ -35,7 +37,20 @@ define(function(require) {
         stop_sync_results: function() {
             clearInterval(this.refresh);
             return null;
-        }
+        },
+
+        /**
+        Show minion grains in a modal popup
+        **/
+        show_detail: function(e) {
+            var mid = e.target.dataset.mid;
+            this.minion_detail = minions._cache[mid];
+            this.minion_detail_id = minions._cache[mid].id;
+        },
+        hide_detail: function() {
+            this.minion_detail = null;
+            this.minion_detail_id = null;
+        },
     };
 
     var init = function() {

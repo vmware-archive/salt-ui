@@ -17,9 +17,7 @@ define(function(require) {
         dashexec:       require('elements/dashexec/dashexec'),
         exec_results:   require('elements/exec-results/exec-results'),
         login:          require('elements/login/login'),
-        minion_detail:  require('elements/minion-detail/minion-detail'),
         minion_list:    require('elements/minion-list/minion-list'),
-        modal:          require('elements/modal/modal'),
         nav:            require('elements/nav/nav'),
     };
 
