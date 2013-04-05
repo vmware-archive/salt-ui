@@ -7,6 +7,7 @@ define(function(require) {
     var vms = {
         exec:       require('./exec'),
         login:      require('./login'),
+        nav:        require('./nav'),
     };
 
     return vms;
