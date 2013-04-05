@@ -8,6 +8,8 @@ define(function() {
     'use strict';
 
     var array = function(value) {
+        if (!value) return value;
+
         if (typeof(value) === 'object') {
             return Object.keys(value).map(function(key){ return value[key]; });
         }
