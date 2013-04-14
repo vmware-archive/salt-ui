@@ -12,6 +12,9 @@ define(function(require) {
     function Minions() {
         this.lowstate = [{client: 'local', tgt: '*', fun: 'grains.items'}];
 
+        // Set up an event listener
+        document.addEventListener('x-login-authed', this.sync);
+
         /**
         Update the result cache
         **/
