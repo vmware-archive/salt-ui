@@ -20,9 +20,7 @@ define(function(require) {
                     {vm: viewmodels[this.dataset.vm]});
             },
             removed: function(){
-                console.log('x-foo removed', this);
-
-                rivets.unbind(this.__view__);
+                this.__view__.unbind();
             },
             attributeChanged: function(attr, value){
                 console.log('x-foo attributeChanged', this, attr, value);
