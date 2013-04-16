@@ -6,6 +6,6 @@ e089c44fc0d9c558a6d68c786fb07d43  less.js
 f54542eedd2c150bbb62e75aee2ee705  path.js
 985a8b627043f84b2824661078926cf1  q.js
 2b3bbe10644da6d8fcf8cfa40def64ea  require.js
-e8410c678831d7095c3ae4e3f473e219  rivets.js
+ef837903c8febd002361df676dc95d6b  rivets.js
 c74da9987e8c5fe8f74de40d6a9f5f77  text.js
 d77345469346bde53bb9f03e66d64bed  watch.js
