@@ -6,7 +6,8 @@ define(function(require) {
 
     var minions = require('models/minions'),
         xhr = require('utils/xhr'),
-        f = require('utils/func');
+        f = require('utils/func'),
+        fireEvent = require('utils/events');
 
     var drawtree = require('elements/exec-results/tree');
 
@@ -20,7 +21,7 @@ define(function(require) {
         client: 'local',
         tgt: '*',
         fun: '',
-        arg: '',
+        arg: [{val:''}],
 
         inprogress: false,
         result: null,
@@ -33,8 +34,18 @@ define(function(require) {
                 client: this.client,
                 tgt: this.tgt,
                 fun: this.fun,
-                arg: this.arg ? this.arg.split(' ') : [],
+                arg: f.pluck('val')(this.arg),
             };
+        },
+
+        /**
+        Add items to the ``arg`` array
+        **/
+        add_arg: function(e) {
+            this.arg.push({val:''});
+            // TODO: replace this with a for-each-* binding that can reuse
+            // existing DOM elements
+            fireEvent(e.target, 'x-context-refresh');
         },
 
         /**

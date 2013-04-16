@@ -15,9 +15,15 @@
         placeholder="module.function"
         data-input="vm.fun">
 
-    <input type="text" class="input-medium"
-        placeholder="arg1=val"
-        data-input="vm.arg">
+    <div class="input-append">
+        <input type="text" class="input-medium"
+            placeholder="arg=val"
+            data-each-arg="vm:arg"
+            data-input="arg.val">
+
+        <button class="btn" type="button"
+            data-on-click="vm.add_arg"><i class="icon-plus"></i></button>
+    </div>
 
     <button type="submit" class="btn btn-primary"
             data-class-disabled="vm.inprogress"
