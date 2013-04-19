@@ -14,21 +14,27 @@ define(function(require) {
         __map = Array.prototype.map;
 
     /**
-    merge
+    From http://allong.es; MIT License
     **/
-    function merge(target, source) {
-        return Object.keys(source).reduce(function(accum, key) {
-            return (accum[key] = source[key]) && accum;
-        }, target);
-    }
+    function extend () {
+        var consumer = arguments[0],
+            providers = __slice.call(arguments, 1),
+            key,
+            i,
+            provider,
+            except;
 
-    /**
-    extend
-    **/
-    function extend() {
-        return __slice.call(arguments).reduce(function(target, source) {
-            return merge(target, source);
-        });
+        for (i = 0; i < providers.length; i += 1) {
+            provider = providers[i];
+            except = provider.except || [];
+            except.push('except');
+            for (key in provider) {
+                if (except.indexOf(key) < 0 && provider.hasOwnProperty(key)) {
+                    consumer[key] = provider[key];
+                }
+            }
+        }
+        return consumer;
     }
 
     /**
@@ -327,7 +333,6 @@ define(function(require) {
         isNull: isNull,
         maybe: maybe,
         memoized: memoized,
-        merge: merge,
         pluck: pluck,
         send: send,
         invoke: invoke,
