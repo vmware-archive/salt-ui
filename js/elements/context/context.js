@@ -20,8 +20,9 @@ define(function(require) {
                         "' not found on element '"+ this +"'");
                 }
 
-                this.__view__ = rivets.bind(this,
-                    {vm: viewmodels[this.dataset.vm]});
+                viewmodel.init().then(function(vm) {
+                    that.__view__ = rivets.bind(that, {vm: vm});
+                }).done();
             },
             removed: function(){
                 this.__view__.unbind();
