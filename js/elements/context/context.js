@@ -23,8 +23,13 @@ define(function(require) {
                 viewmodel.init().then(function(vm) {
                     that.__view__ = rivets.bind(that, {vm: vm});
                 }).done();
+
+                this.addEventListener('x-context-refresh', function() {
+                    that.__view__.sync();
+                });
             },
             removed: function(){
+                this.removeEventListener('x-context-refresh');
                 this.__view__.unbind();
             },
             attributeChanged: function(attr, value){
