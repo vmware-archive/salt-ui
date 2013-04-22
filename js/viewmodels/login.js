@@ -6,7 +6,11 @@ define(function(require) {
 
     var xhr = require('utils/xhr');
 
-    var vm = {
+    var mixin = require('utils/mixin'),
+        withInit = require('./mixins/withInit'),
+        withAdvice = require('advice');
+
+    var vm = mixin([withInit, withAdvice], {
         username: '',
         password: '',
         eauth: 'pam',
@@ -41,7 +45,7 @@ define(function(require) {
                 that.inprogress = false;
             }).done();
         },
-    };
+    });
 
     return vm;
 });

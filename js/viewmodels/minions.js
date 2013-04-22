@@ -6,9 +6,17 @@ define(function(require) {
 
     var minions = require('models/minions');
 
-    var vm = {
-        minions: null,
+    var mixin = require('utils/mixin'),
+        withInit = require('./mixins/withInit'),
+        withAdvice = require('advice');
+
+    var f = require('utils/func');
+
+    var vm = mixin([withInit, withAdvice], {
+        models: [f.sendWithCtx(minions, 'get_result')],
+
         refresh: null,
+        minions: null,
         minion_detail: null,
         minion_detail_id: null,
 
@@ -51,16 +59,14 @@ define(function(require) {
             this.minion_detail = null;
             this.minion_detail_id = null;
         },
-    };
+    });
 
-    var init = function() {
-        var that = this;
+    vm.around('init', function(init) {
+        return init().then(function() {
+            vm.minions = minions._cache;
+            return vm;
+        });
+    });
 
-        minions.get_result().then(function(result) {
-            that.minions = result;
-        }).done();
-    };
-
-    init.call(vm);
     return vm;
 });

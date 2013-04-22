@@ -4,12 +4,19 @@ Description
 define(function(require) {
     'use strict';
 
-    var xhr = require('utils/xhr'),
+    var minions = require('models/minions'),
+        xhr = require('utils/xhr'),
         f = require('utils/func');
 
     var drawtree = require('elements/exec-results/tree');
 
-    var vm = {
+    var mixin = require('utils/mixin'),
+        withInit = require('./mixins/withInit'),
+        withAdvice = require('advice');
+
+    var vm = mixin([withInit, withAdvice], {
+        models: [f.sendWithCtx(minions, 'get_result')],
+
         client: 'local',
         tgt: '*',
         fun: '',
@@ -80,7 +87,7 @@ define(function(require) {
             })
             .done();
         },
-    };
+    });
 
     return vm;
 });
