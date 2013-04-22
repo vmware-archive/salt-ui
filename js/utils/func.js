@@ -200,8 +200,9 @@ define(function(require) {
     Like send() but with an explicit context
     **/
     function sendWithCtx(ctx, attr) {
-        var arg = __slice.call(arguments, 2);
-        return ctx[attr].apply(ctx, arg);
+        return function() {
+            return ctx[attr].apply(ctx, arguments);
+        };
     }
 
     /**
