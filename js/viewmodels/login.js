@@ -4,7 +4,8 @@ Description
 define(function(require) {
     'use strict';
 
-    var xhr = require('utils/xhr');
+    var xhr = require('utils/xhr'),
+        fireEvent = require('utils/events');
 
     var mixin = require('utils/mixin'),
         withInit = require('./mixins/withInit'),
@@ -32,10 +33,7 @@ define(function(require) {
                 eauth: this.eauth})
             .then(
                 function(result) {
-                    // TODO: make a mixin out of this
-                    document.register.__polyfill__.fireEvent(
-                        e.target, 'x-login-authed', result);
-
+                    fireEvent(e.target, 'x-login-authed', result);
                     window.history.back();
                 },
                 function (result) {
