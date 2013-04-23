@@ -13,18 +13,31 @@ define(function(require) {
 
     var elem_map = {
         context:        require('elements/context/context'),
-        exec:           require('elements/exec/exec'),
+        exec:           simpleEl(require('text!./exec/template.html')),
         dashexec:       require('elements/dashexec/dashexec'),
         exec_results:   require('elements/exec-results/exec-results'),
-        login:          require('elements/login/login'),
-        minion_list:    require('elements/minion-list/minion-list'),
-        nav:            require('elements/nav/nav'),
+        login:          simpleEl(require('text!./login/template.html')),
+        minion_list:    simpleEl(require('text!./minion-list/template.html')),
+        nav:            simpleEl(require('text!./nav/template.html')),
     };
 
     // Register the modules with X-Tag
     Object.keys(elem_map).forEach(function(val) {
         document.register('x-' + val.replace(/_/, '-'), elem_map[val]);
     });
+
+    /**
+    A small factory for elements that do nothing but render a template
+    **/
+    function simpleEl(template) {
+        return {
+            'lifecycle': {
+                created: function(){
+                    this.innerHTML = template;
+                },
+            },
+        };
+    }
 
     return elem_map;
 });
