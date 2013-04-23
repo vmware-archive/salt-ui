@@ -16,7 +16,7 @@
 --url "https://raw.github.com/mtrpcic/pathjs/2fe037d6/path.js"
 -O
 
---url "https://raw.github.com/mikeric/rivets/v0.4.8/lib/rivets.js"
+--url "https://raw.github.com/mikeric/rivets/v0.4.9/lib/rivets.js"
 -O
 
 --url "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
