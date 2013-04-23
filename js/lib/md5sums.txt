@@ -7,5 +7,5 @@ f54542eedd2c150bbb62e75aee2ee705  path.js
 985a8b627043f84b2824661078926cf1  q.js
 2b3bbe10644da6d8fcf8cfa40def64ea  require.js
 56e5066475ff6ae4ac702916c58597d5  rivets.js
-c74da9987e8c5fe8f74de40d6a9f5f77  text.js
+9da155eddc68b8fb3df906e172785344  text.js
 d77345469346bde53bb9f03e66d64bed  watch.js

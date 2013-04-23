@@ -7,10 +7,10 @@
 --url "http://requirejs.org/docs/release/2.1.5/comments/require.js"
 -O
 
---url "https://raw.github.com/requirejs/domReady/latest/domReady.js"
+--url "https://raw.github.com/requirejs/domReady/2.0.1/domReady.js"
 -O
 
---url "https://raw.github.com/requirejs/text/latest/text.js"
+--url "https://raw.github.com/requirejs/text/2.0.6/text.js"
 -O
 
 --url "https://raw.github.com/mtrpcic/pathjs/2fe037d6/path.js"
@@ -19,7 +19,7 @@
 --url "https://raw.github.com/mikeric/rivets/v0.4.9/lib/rivets.js"
 -O
 
---url "https://raw.github.com/melanke/Watch.JS/master/src/watch.js"
+--url "https://raw.github.com/melanke/Watch.JS/47fbe03/src/watch.js"
 -O
 
 --url "https://raw.github.com/mozilla/web-components/9280493/src/document.register.js"
