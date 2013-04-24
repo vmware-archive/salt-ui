@@ -99,6 +99,8 @@ define(function(require) {
     }
 
     /**
+    Collects trailing args into an array
+
     From http://allong.es; MIT License
     **/
     function variadic (fn) {
@@ -128,9 +130,11 @@ define(function(require) {
     }
 
     /**
-    From http://allong.es; MIT License
+    Partially apply the first argument
 
-    Applies the first argument, returns a variadic function taking the rest
+    Returns a variadic function taking the rest
+
+    From http://allong.es; MIT License
     **/
     function applyFirst (fn, first) {
         return variadic( function (args) {
@@ -139,12 +143,12 @@ define(function(require) {
     }
 
     /**
-    From http://allong.es; MIT License
-
-    Applies one or more arguments in the leftmost positions
+    Partially apply one or more arguments in the leftmost positions
 
     If the function argument is a string it will be treated as a method on the
     current object.
+
+    From http://allong.es; MIT License
     **/
     var applyLeft = variadic( function (fn, args) {
         return variadic( function (remainingArgs) {
