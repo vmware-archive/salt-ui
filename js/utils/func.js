@@ -56,6 +56,8 @@ define(function(require) {
     var isVal = curry(function(type, val) { return val === type });
     var isTrue = isVal(true);
     var isNull = isVal(null);
+    var isUndefined = isVal(undefined);
+    var isEmpty = isVal('');
 
     /**
     Extract the arguments of a function as an array
@@ -349,8 +351,10 @@ define(function(require) {
         getWith: getWith,
         identity: identity,
         invoke: invoke,
+        isEmpty: isEmpty,
         isNull: isNull,
         isTrue: isTrue,
+        isUndefined: isUndefined,
         isVal: isVal,
         map: map,
         mapWith: mapWith,

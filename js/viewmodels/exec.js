@@ -34,7 +34,8 @@ define(function(require) {
                 client: this.client,
                 tgt: this.tgt,
                 fun: this.fun,
-                arg: f.pluck('val')(this.arg),
+                arg: f.pluckWith('val')(this.arg)
+                    .filter(f.compose(f.not, f.isEmpty)),
             };
         },
 
