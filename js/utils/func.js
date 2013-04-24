@@ -284,7 +284,7 @@ define(function(require) {
         return function() {
             if (arguments.length === 0) return;
 
-            for (var i; i < arguments.length; i += 1) {
+            for (var i = 0; i < arguments.length; i += 1) {
                 if (arguments[i] === null) return;
             }
 
