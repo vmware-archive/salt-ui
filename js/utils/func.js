@@ -154,35 +154,50 @@ define(function(require) {
     });
 
     /**
-    Turns any function into a mapper
-
-        splat(function (x) { return x * x })([1, 2, 3, 4])
-        //=> [1, 4, 9, 16]
+    Return a function with the argument order reversed and optionally curried
 
     From http://allong.es; MIT License
     **/
-    function splat (fn) {
-        return function (list) {
-            return __map.call(list,
-                function(something) { return fn(something) });
+    function flip (fn) {
+        return function (first, second) {
+            if (arguments.length === 2) {
+                return fn(second, first);
+            } else {
+                return function (second) {
+                    return fn(second, first);
+                };
+            }
         };
     }
+
+    /**
+    Turns any function into a mapper
+
+    @example
+        var squareMap = mapWith(function (n) { return n*n });
+        squareMap([1, 2, 3, 4, 5]);
+        //=> [1, 4, 9, 16, 25]
+
+    From http://allong.es; MIT License
+    **/
+    function map(list, fn, ctx) { return __map.call(list, fn, ctx) }
+    var mapWith = flip(map);
 
     /**
     Grab an attribute from an object
 
     From http://allong.es; MIT License
     **/
-    function get (attr) {
-        return function (object) { return object[attr] };
-    }
+    function get (object, attr) { return object[attr] }
+    var getWith = flip(get);
 
     /**
     Grab an attribute from a list of objects
 
     From http://allong.es; MIT License
     **/
-    var pluck = compose(splat, get);
+    var pluckWith = compose(mapWith, getWith);
+    var pluck = flip(pluckWith);
 
     /**
     Send a message/invoke a method on the receiver.
@@ -329,16 +344,19 @@ define(function(require) {
         get: get,
         identity: identity,
         not: not,
+        mapWith: mapWith,
+        map: map,
         isVal: isVal,
         isTrue: isTrue,
         isNull: isNull,
         maybe: maybe,
         memoized: memoized,
+        pluckWith: pluckWith,
         pluck: pluck,
+        getWith: getWith,
         send: send,
         invoke: invoke,
         sendWithCtx: sendWithCtx,
-        splat: splat,
         variadic: variadic,
         wrap: wrap,
         retry_promise: retry_promise,
