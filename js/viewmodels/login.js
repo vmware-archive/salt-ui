@@ -33,6 +33,8 @@ define(function(require) {
                 eauth: this.eauth})
             .then(
                 function(result) {
+                    that.username = '';
+                    that.password = '';
                     fireEvent(e.target, 'x-login-authed', result);
                     window.history.back();
                 },
