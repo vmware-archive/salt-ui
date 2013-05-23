@@ -100,6 +100,10 @@ define(function(require) {
         };
     }
 
+    function last(array) {
+        return array[array.length - 1];
+    }
+
     /**
     Collects trailing args into an array
 
@@ -356,6 +360,7 @@ define(function(require) {
         isTrue: isTrue,
         isUndefined: isUndefined,
         isVal: isVal,
+        last: last,
         map: map,
         mapWith: mapWith,
         maybe: maybe,
