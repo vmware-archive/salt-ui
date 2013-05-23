@@ -26,7 +26,7 @@ define(function(require) {
         **/
         adapter: {
             subscribe: function(obj, keypath, callback) {
-                Watch.watch(obj, keypath, callback);
+                Watch.watch(obj, keypath, callback, true);
             },
             unsubscribe: function(obj, keypath, callback) {
                 Watch.unwatch(obj, keypath, callback);
