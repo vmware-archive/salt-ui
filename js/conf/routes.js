@@ -27,6 +27,13 @@ define(function(require) {
         type: 'full',
     });
 
+    route_map.add('config', {
+        url: '#/config',
+        name: 'Config',
+        tmpl: require('text!tmpl/config-master.html'),
+        type: 'full',
+    });
+
     route_map.add('login', {
         url: '#/login',
         tmpl: '<x-login></x-login>',
