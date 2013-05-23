@@ -13,6 +13,17 @@ define(function(require) {
         Watch = require('watch');
 
     rivets.configure({
+        /**
+        Configure event handler callbacks with the event as an arg
+        and with the current model as the context
+        **/
+        handler: function(context, ev, binding) {
+            return this.call(binding.model, ev, binding.view);
+        },
+
+        /**
+        Configure two-way binding using Watch.JS
+        **/
         adapter: {
             subscribe: function(obj, keypath, callback) {
                 Watch.watch(obj, keypath, callback);
