@@ -13,6 +13,8 @@ define(function(require) {
         __push = Array.prototype.push,
         __map = Array.prototype.map;
 
+    var __split = String.prototype.split;
+
     /**
     From http://allong.es; MIT License
     **/
@@ -202,6 +204,23 @@ define(function(require) {
     var getWith = flip(get);
 
     /**
+    Grab a value from nested objects based on a string lookup
+
+    @throws {TypeError} Throws lookup errors as normal but from anywhere in the
+        chain: "Cannot read property 'bar' of foo"
+
+    @example
+        deepGet({foo: {bar: {baz: true}}, 'foo.bar.baz')
+        //=> true
+    **/
+    function deepGet(obj, attr_lookup) {
+        return __split.call(attr_lookup, '.').reduce(function(memo, val) {
+            return memo[val];
+        }, obj);
+    }
+    var deepGetWith = flip(deepGet);
+
+    /**
     Grab an attribute from a list of objects
 
     From http://allong.es; MIT License
@@ -353,6 +372,8 @@ define(function(require) {
         fluent: fluent,
         get: get,
         getWith: getWith,
+        deepGet: deepGet,
+        deepGetWith: deepGetWith,
         identity: identity,
         invoke: invoke,
         isEmpty: isEmpty,
