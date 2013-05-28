@@ -59,7 +59,7 @@ define(function(require) {
             this.inprogress = true;
 
             this.create_jid()
-            .then(function() {
+            .fin(function() {
                 that.inprogress = false;
             })
             .done();
