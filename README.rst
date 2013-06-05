@@ -23,9 +23,4 @@ To develop on salt-ui itself:
 2.  Download required third-party libs::
 
         cd /path/to/salt-ui
-        cd ./js/libs
-        curl -K libs.txt
-
-3.  (Optional) Verify third-party libs::
-
-        md5sum --check --quiet md5sums.txt
+        make clean && make
