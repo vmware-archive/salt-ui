@@ -5,6 +5,7 @@ define(function(require) {
     'use strict';
 
     var vms = {
+        config:     require('./config'),
         exec:       require('./exec'),
         keys:       require('./keys'),
         login:      require('./login'),
