@@ -1,0 +1,98 @@
+<x-nav></x-nav>
+
+<x-context data-vm="keys">
+
+<div id="wrap">
+    <div class="container-fluid dash-container">
+        <div class="row-fluid">
+            <div class="span2 sidebar dash-sidebar">
+                <div class="sidebar-nav">
+
+                    <h5>Minion keys</h5>
+
+                    <!-- TODO: factor out this repetition -->
+
+                    <ul class="nav nav-list">
+                        <li class="nav-header">
+                        <i class="btn-link"
+                            data-on-click="vm:toggle_pend"
+                            data-class-icon-check="vm:checked_all_pend | not < vm.pending"
+                            data-class-icon-check-empty="vm:checked_all_pend < vm.pending"
+                            ></i> Pending
+                        <span class="badge badge-success" data-text="vm.pending | length">.</span>
+                        </li>
+                        <li data-each-m="vm.pending">
+                        <label class="checkbox">
+                            <input type="checkbox" data-checked="m.checked"><span data-text="m.id"></span>
+                        </label>
+                        </li>
+
+                        <li class="nav-header">
+                        <i class="btn-link"
+                            data-on-click="vm:toggle_acc"
+                            data-class-icon-check="vm:checked_all_acc | not < vm.accepted"
+                            data-class-icon-check-empty="vm:checked_all_acc < vm.accepted"
+                            ></i> Accepted
+                        <span class="badge badge-success" data-text="vm.accepted | length">.</span>
+                        </li>
+                        <li data-each-m="vm.accepted">
+                        <label class="checkbox">
+                            <input type="checkbox" data-checked="m.checked"><span data-text="m.id"></span>
+                        </label>
+                        </li>
+
+                        <li class="nav-header">
+                        <i class="btn-link"
+                            data-on-click="vm:toggle_rej"
+                            data-class-icon-check="vm:checked_all_rej | not < vm.rejected"
+                            data-class-icon-check-empty="vm:checked_all_rej < vm.rejected"
+                            ></i> Rejected
+                        <span class="badge badge-success" data-text="vm.rejected | length">.</span>
+                        </li>
+                        <li data-each-m="vm.rejected">
+                        <label class="checkbox">
+                            <input type="checkbox" data-checked="m.checked"><span data-text="m.id"></span>
+                        </label>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="span8 main">
+                <h5>Selected keys</h5>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Fingerprint</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            data-each-s="vm:show_selected < .pending .accepted .rejected"
+                            data-show="s.checked">
+                            <td data-text="s.id"></td>
+                            <td data-text="s.fp"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="span2">
+                <p><button class="btn btn-success"
+                    data-on-click="vm.accept"
+                    ><i class="icon-plus"></i> Accept</button></p>
+                <p><button class="btn"
+                    data-on-click="vm.reject"
+                    ><i class="icon-minus"></i> Reject</button></p>
+                <p><button class="btn btn-danger"
+                    data-on-click="vm.delete"
+                    ><i class="icon-trash"></i> Delete</button></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</x-context>
